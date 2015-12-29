@@ -1,0 +1,3276 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Api.Models</name>
+    </assembly>
+    <members>
+        <member name="P:Api.Models.AuditLog.AuditLogEntry.Id">
+            <summary>
+            The ID of this log entry.
+            </summary>
+        </member>
+        <member name="P:Api.Models.AuditLog.AuditLogEntry.OperationType">
+            <summary>
+            Operation type of this log entry: add to the OperationType enum for more specific types (e.g. BatchUpdate).
+            </summary>
+        </member>
+        <member name="P:Api.Models.AuditLog.AuditLogEntry.DateTime">
+            <summary>
+            When the log entry was created.
+            </summary>
+        </member>
+        <member name="P:Api.Models.AuditLog.AuditLogEntry.Subject">
+            <summary>
+            The subject (ID) of the user that did the operation.
+            </summary>
+        </member>
+        <member name="P:Api.Models.AuditLog.AuditLogEntry.Username">
+            <summary>
+            Copy of the user name: if the user is removed or modified, then we want to keep the original user name.
+            </summary>
+        </member>
+        <member name="P:Api.Models.AuditLog.AuditLogEntry.EntityId">
+            <summary>
+            (Optional) ID of the entity that was modified / created / deleted / etc.
+            </summary>
+        </member>
+        <member name="P:Api.Models.AuditLog.AuditLogEntry.EntityType">
+            <summary>
+            Type of the entity that was modified / created / deleted / etc.
+            </summary>
+        </member>
+        <member name="P:Api.Models.AuditLog.AuditLogEntry.Info">
+            <summary>
+            Extra information (optional).
+            </summary>
+        </member>
+        <member name="T:Api.Models.Auth.RoleTree">
+            <summary>
+            Todo: Describe this class
+            </summary>
+        </member>
+        <member name="F:Api.Models.Auth.RoleType.Standard">
+            <summary>
+            Standard roles are for ordinary users and Caspeco support.
+            NOTE: All Caspeco support users have all these roles.
+            </summary>
+        </member>
+        <member name="F:Api.Models.Auth.RoleType.ExtendedSupport">
+            <summary>
+            Special roles that only specific Caspeco support users have, e.g. "Caspeco Tidsadmin Superanvändare" and "Caspeco Löneadmin Superanvändare".
+            NOTE: In order to get these roles the Caspeco support user must have a flag that matches each extended support role that user should have, e.g. "caspeco_time_su" in the global flags db.
+            </summary>
+        </member>
+        <member name="F:Api.Models.Auth.RoleType.System">
+            <summary>
+            Non-human-user roles, e.g. Clock (sv. Stämpelklocka) and Ledger (sv. Liggare). 
+            NOTE: Caspeco support users have all these roles, but they should be hidden in the GUI (as of 2015-09-17).
+            </summary>
+        </member>
+        <member name="P:Api.Models.Bookings.BookedArticle.Id">
+            <summary>
+            The ID of the article booking (not the same as article id)
+            </summary>
+        </member>
+        <member name="P:Api.Models.Bookings.BookedArticle.ArticleId">
+            <summary>
+            The ID of the article
+            </summary>
+        </member>
+        <member name="P:Api.Models.Bookings.BookedArticle.ArticleGroupId">
+            <summary>
+            The article group ID this article belongs to
+            </summary>
+        </member>
+        <member name="P:Api.Models.Bookings.BookedArticle.BookingId">
+            <summary>
+            The booking ID this article booking belongs to
+            </summary>
+        </member>
+        <member name="P:Api.Models.Bookings.BookedArticle.UnitId">
+            <summary>
+            The unit ID this article booking belongs to
+            </summary>
+        </member>
+        <member name="P:Api.Models.Bookings.BookedArticle.DepartmentId">
+            <summary>
+            Comma-separated list of department IDs this article is connected to
+            </summary>
+        </member>
+        <member name="P:Api.Models.Bookings.BookedArticle.Start">
+            <summary>
+            Start time of this article booking
+            </summary>
+        </member>
+        <member name="P:Api.Models.Bookings.BookedArticle.End">
+            <summary>
+            End time of this article booking
+            </summary>
+        </member>
+        <member name="P:Api.Models.Bookings.BookedArticle.Name">
+            <summary>
+            Full name of this article
+            </summary>
+        </member>
+        <member name="P:Api.Models.Bookings.BookedArticle.TableName">
+            <summary>
+            Table name that is shown on the table map (only for non-table articles)
+            </summary>
+        </member>
+        <member name="P:Api.Models.Bookings.BookedArticle.TableNumber">
+            <summary>
+            The table number in string format (only for non-table articles)
+            </summary>
+        </member>
+        <member name="P:Api.Models.Bookings.BookedArticle.TableChairs">
+            <summary>
+            Number of chairs available on this table (only for non-table articles)
+            </summary>
+        </member>
+        <member name="P:Api.Models.Bookings.BookedArticle.Message">
+            <summary>
+            Text note on this article
+            </summary>
+        </member>
+        <member name="P:Api.Models.Bookings.BookedArticle.Quantity">
+            <summary>
+            The quantity of this article that have been booked (only for non-table articles)
+            </summary>
+        </member>
+        <member name="P:Api.Models.Bookings.BookedArticle.IsTable">
+            <summary>
+            Indicates if this article is a table
+            </summary>
+        </member>
+        <member name="P:Api.Models.Bookings.Booking.Contact">
+            <summary>
+            Can be optionally loaded with the booking in the booking repository (is null otherwise).
+            </summary>
+        </member>
+        <member name="P:Api.Models.Bookings.Booking.SendAutomaticConfirmationMessage">
+            <summary>
+            Set if the user checked "send confirmation" when the booking is created or updated.
+            This value is not saved in the database.
+            </summary>
+        </member>
+        <member name="T:Api.Models.Bookings.BookingWarning">
+            <summary>
+            A warning for a given booking.
+            </summary>
+        </member>
+        <member name="T:Api.Models.Bookings.BookingWarningType">
+            <summary>
+            Type of booking warning (see also Business Control).
+            </summary>
+        </member>
+        <member name="T:Api.Models.Bookings.BookingWarningSection">
+            <summary>
+            Section of booking warnings with same warning type. 
+            </summary>
+        </member>
+        <member name="P:Api.Models.Bookings.BookingWarningSection.WarningType">
+            <summary>
+            Type of warning
+            </summary>
+        </member>
+        <member name="P:Api.Models.Bookings.BookingWarningSection.SettingsValue">
+            <summary>
+            When to warn (e.g. a given number of days before booking): a value from the settings.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Bookings.BookingWarningSection.BookingWarnings">
+            <summary>
+            The bookings applicable to the warning.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Helpers.DateTimeExtensions.StartOfWeek(System.DateTime)">
+            <summary>
+            Gets the date of the closest Monday equals or before the given date.
+            </summary>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Models.Helpers.DateTimeExtensions.DayOfWeekIndex(System.DateTime,System.DayOfWeek)">
+            <summary>
+            Returns the day-index for a given date.
+            </summary>
+            <param name="date">The date to get index for.</param>
+            <param name="firstDayOfWeek">The first day of the week (index=0), if other than Monday.</param>
+            <returns>Index the the date</returns>
+        </member>
+        <member name="T:Api.Models.Common.Utils.QueueHelpers">
+            <summary>
+            Static helper class to give access to the send queue to multiple projects
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Utils.QueueHelpers.AddToQueue(Api.Models.Common.Utils.QueueMessage)">
+            <summary>
+                Add items to the queue used to store Commands.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Api.Models.Common.Utils.QueueMessage">
+            <summary>
+            Note! These objects are not allowed to be too big - the size limit of Azure Queue Messages is
+            64kB. If you need to pass larger payloads, put them in an Azure Blob for example, and put a
+            reference to the blob as the Payload.
+            TODO: Might be better to do this automatically - always store payload to blob?
+            </summary>
+        </member>
+        <member name="M:Api.Models.Extensions.DictionaryExtensions.Get``2(System.Collections.Generic.Dictionary{``0,``1},``0,System.Func{``1})">
+            <summary>
+            Gets key in dic. If not present, returns the result of calling or.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Extensions.DictionaryExtensions.Get``2(System.Collections.Generic.Dictionary{``0,``1},``0,``1)">
+            <summary>
+            Gets key in dic. If not present, returns or.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Extensions.EnumerableExtensions.Partition``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+            <summary>
+            Partitions source into sequences of size n.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Extensions.EnumerableExtensions.Partition``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32)">
+            <summary>
+            Partitions source into sequences of size n, and steps step items between each partition.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Extensions.EnumerableExtensions.PartitionBy``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})">
+            <summary>
+            Splits coll into a sequence of lists. Will split each time the result of calling
+            f on an item returns a different value than the previous call. Example:
+            coll = [1, 1, 2, 2, 4, 5]
+            f = function that returns true if its argument is even, otherwise false
+            result: [[1, 1], [2, 2, 4], [5]]
+            </summary>
+        </member>
+        <member name="M:Api.Models.Extensions.EnumerableExtensions.PartitionBy``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1},System.Collections.Generic.IEqualityComparer{``1})">
+            <summary>
+            Splits coll into a sequence of lists. Will split each time the result of calling
+            f on an item returns a different value than the previous call. Example:
+            coll = [1, 1, 2, 2, 4, 5]
+            f = function that returns true if its argument is even, otherwise false
+            result: [[1, 1], [2, 2, 4], [5]]
+            </summary>
+        </member>
+        <member name="M:Api.Models.Extensions.EnumerableExtensions.Dedupe``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Returns a seq where consecutive duplicates in coll has been removed.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Extensions.EnumerableExtensions.Dedupe``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Returns a seq where consecutive duplicates in coll has been removed.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Extensions.EnumerableExtensions.DistinctBy``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})">
+            <summary>
+            Same as Distinct, but instead of checking object equality, checks equality of the item
+            returned by f.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Extensions.GenericExtensions.In``1(``0,``0[])">
+            <summary>
+            Returns whether or not source equals any of the given arguments.
+            </summary>
+            <param name="source"></param>
+            <param name="list"></param>
+        </member>
+        <member name="P:Api.Models.CaspecoIdentity.User.MobilePhone">
+            <summary>
+            Global mobile phone of user: each user can also have system specific mobile phone numbers.
+            </summary>
+        </member>
+        <member name="P:Api.Models.CaspecoIdentity.User.Email">
+            <summary>
+            Global email of user: each user can also have system specific email addresses.
+            </summary>
+        </member>
+        <member name="P:Api.Models.CaspecoIdentity.User.Locale">
+            <summary>
+            Global locale of user
+            </summary>
+        </member>
+        <member name="P:Api.Models.CaspecoIdentity.SystemUserInfo.SystemName">
+            <summary>
+            Name of system
+            </summary>
+        </member>
+        <member name="P:Api.Models.CaspecoIdentity.SystemUserInfo.WorkMobilePhone">
+            <summary>
+            System specific (work) mobile phone. 
+            </summary>
+        </member>
+        <member name="P:Api.Models.CaspecoIdentity.SystemUserInfo.WorkEmail">
+            <summary>
+            System specific (work) email address.
+            </summary>
+        </member>
+        <member name="T:Api.Models.Payroll.ExtraProfessionStatistics">
+            <summary>
+            Contains the usage counts and date range of an extra profession for a given employee and employment.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Payroll.ExtraProfessionStatistics.EmployeeId">
+            <summary>
+            Id of employee.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Payroll.ExtraProfessionStatistics.EmploymentId">
+            <summary>
+            Id of employee's employment.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Payroll.ExtraProfessionStatistics.ExtraProfessionNumber">
+            <summary>
+            The extra professions number.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Payroll.ExtraProfessionStatistics.Total">
+            <summary>
+            The total number of shifts that have the extra profession number for the employee and employment.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Payroll.ExtraProfessionStatistics.FromDate">
+            <summary>
+            The total is counted on shifts with InTime >= FromDate (optional).
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:Api.Models.Payroll.ExtraProfessionStatistics.ToDate" -->
+        <member name="P:Api.Models.Payroll.PayrollRunSoftLockedDate.Id">
+            <summary>
+            Id in database.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Payroll.PayrollRunSoftLockedDate.PayrollRunDate">
+            <summary>
+            Primary key in database.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Payroll.PayrollRunSoftLockedDate.ModifiedAt">
+            <summary>
+            NOTE: Type is OffsetDateTime.
+            </summary>
+        </member>
+        <member name="T:Api.Models.Payroll.Warning.PayrollContractWarning">
+            <summary>
+            Class for detailed Contract warning.
+            </summary>
+        </member>
+        <member name="T:Api.Models.Payroll.Warning.PayrollBaseWarning">
+            <summary>
+            Base class for detailed Payroll warning.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Payroll.Warning.PayrollBaseWarning.#ctor(Api.Models.Payroll.Warning.PayrollWarning)">
+            <summary>
+            Standard constructor.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Payroll.Warning.PayrollBaseWarning.#ctor">
+            <summary>
+            Default constructor needed for (de)serialization.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Payroll.Warning.PayrollBaseWarning.#ctor(Api.Models.Payroll.Warning.PayrollBaseWarning)">
+            <summary>
+            Copy constructor.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Payroll.Warning.PayrollBaseWarning.Warning">
+            <summary>
+            Static warning information.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Payroll.Warning.PayrollBaseWarning.WarningDescriptionValues">
+            <summary>
+            Key-value-pairs intended to create dynamic warning description translations.
+            NOTE: May also contain further technical values that could be usedful for Caspeco (technical)support to find the cause of the warning, e.g. PayrollArticleDefinitionId and ShiftPieceRuleId
+            </summary>
+        </member>
+        <member name="M:Api.Models.Payroll.Warning.PayrollContractWarning.#ctor(Api.Models.Payroll.Warning.PayrollWarning,System.String)">
+            <summary>
+            Constructor for Contract warning relating to a contract.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Payroll.Warning.PayrollContractWarning.#ctor(Api.Models.Payroll.Warning.PayrollWarning)">
+            <summary>
+            Constructor for Contract warning.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Payroll.Warning.PayrollContractWarning.#ctor">
+            <summary>
+            Default constructor needed for (de)serialization.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Payroll.Warning.PayrollContractWarning.#ctor(Api.Models.Payroll.Warning.PayrollContractWarning)">
+            <summary>
+            Copy constructor.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Payroll.Warning.PayrollContractWarning.ContractId">
+            <summary>
+            Both intended as a key and to allow creating a link to related contract.  
+            </summary>
+        </member>
+        <member name="T:Api.Models.Surveys.Survey">
+            <summary>
+            A survey instance
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.Survey.Id">
+            <summary>
+            Id of the survey
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.Survey.Revision">
+            <summary>
+            Revision of the survey; corresponds to the auto-increment Id in the database
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.Survey.CreatedTime">
+            <summary>
+            The time this survey was created
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.Survey.ChangedTime">
+            <summary>
+            The last time this survey was changed
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.Survey.CreatedBy">
+            <summary>
+            Id of the user who created the survey
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.Survey.ChangedBy">
+            <summary>
+            Id of the user that last changed the survey
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.Survey.Status">
+            <summary>
+            Status of the survey. Valid values are 0 = Template, 6 = Deleted
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.Survey.StatusMessage">
+            <summary>
+            Message regarding the current status
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.Survey.Content">
+            <summary>
+            The actual questionnaire structure and content
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.Survey.EmailContent">
+            <summary>
+            Content of email
+            </summary>
+        </member>
+        <member name="T:Api.Models.Surveys.SurveyAnswer">
+            <summary>
+            When a recipient has answered a survey, it's response may be presented in this format.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyAnswer.QuestionId">
+            <summary>
+            The Id of the question within the survey
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyAnswer.Ref">
+            <summary>
+            Optional external reference, to be used by third party if Id is not sufficient
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyAnswer.RecipientId">
+            <summary>
+            The recipient who has responded to the survey
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyAnswer.SurveyId">
+            <summary>
+            The survey which the response is related to (redundant)
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyAnswer.RespondTime">
+            <summary>
+            Time the survey was responded to
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyAnswer.SentTime">
+            <summary>
+            Time the survey was sent to recipient
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyAnswer.ValueStr">
+            <summary>
+            If the response type is a string, this is the value
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyAnswer.ValueInt">
+            <summary>
+            If the response type is an integer, this is the value
+            </summary>
+        </member>
+        <member name="T:Api.Models.Surveys.SurveyContent">
+            <summary>
+            The data content of a survey
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyContent.Title">
+            <summary>
+            Title of the survey
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyContent.Description">
+            <summary>
+            Description of the survey
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyContent.Pages">
+            <summary>
+            List of pages that make up the survey
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyContent.ConfirmationText">
+            <summary>
+            Text to display upon completing the survey
+            </summary>
+        </member>
+        <member name="T:Api.Models.Surveys.SurveyContentAndRecipient">
+            <summary>
+            Wrapper to contain both a recipient and the survey content associated with that recipient.
+            </summary>
+        </member>
+        <member name="F:Api.Models.Surveys.SurveyContentAndRecipient.Content">
+            <summary>
+            Content of the survey that recipient is referring to
+            </summary>
+        </member>
+        <member name="F:Api.Models.Surveys.SurveyContentAndRecipient.Recipient">
+            <summary>
+            The recipient
+            </summary>
+        </member>
+        <member name="T:Api.Models.Surveys.SurveyEmailContent">
+            <summary>
+            Information about recipient's email information
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyEmailContent.SendSubject">
+            <summary>
+            Subject of the email when sending it the first time
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyEmailContent.SendTitle">
+            <summary>
+            Title in the mail when sending it the first time
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyEmailContent.SendText">
+            <summary>
+            Text in the email when sending it the first time
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyEmailContent.RemindSubject">
+            <summary>
+            Subject of the email when sending reminder
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyEmailContent.RemindTitle">
+            <summary>
+            Title in the mail when sending reminder
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyEmailContent.RemindText">
+            <summary>
+            Text in the mail when sending reminder
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyEmailContent.LinkText">
+            <summary>
+            The text on the link
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyNew.Content">
+            <summary>
+            The actual questionnaire structure and content
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyNew.EmailContent">
+            <summary>
+            Content of email
+            </summary>
+        </member>
+        <member name="T:Api.Models.Surveys.SurveyNewRecipient">
+            <summary>
+            Recipient structure class to be used when requesting a survey to be sent
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyNewRecipient.Ref">
+            <summary>
+            Optional third-party identifier for the recipient
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyNewRecipient.Name">
+            <summary>
+            Name of the recipient
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyNewRecipient.EmailAddress">
+            <summary>
+            Email address of the recipient
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyNewRecipient.MobilePhone">
+            <summary>
+            Mobile phone number of the recipient
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyNewRecipient.InvitationMethod">
+            <summary>
+            The method to use when sending the survey to the recipient. Email = 0, Sms = 1, EmailSms = 2
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyNewRecipient.SendTime">
+            <summary>
+            The scheduled time to send the survey
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyNewRecipient.RemindTime">
+            <summary>
+            The time to send a reminder to the recipient if he/she has not answered
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyNewRecipient.CallbackUrl">
+            <summary>
+            The Url to call when the survey has been answered or the status has been changed
+            </summary>
+        </member>
+        <member name="T:Api.Models.Surveys.SurveyPage">
+            <summary>
+            A page of a survey
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyPage.Title">
+            <summary>
+            Title of a single page in the survey
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyPage.Description">
+            <summary>
+            Description of a survey page
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyPage.Sections">
+            <summary>
+            List of sections containing the questions
+            </summary>
+        </member>
+        <member name="T:Api.Models.Surveys.SurveyQuestion">
+            <summary>
+            Makes up one single question in a survey. The type of the question
+            depends on which question object is not null
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyQuestion.Id">
+            <summary>
+            The Id of this particular question. Should be unique within a survey,
+            and should not change between revisions of the survey
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyQuestion.Ref">
+            <summary>
+            Optional external reference, to be used by third party if Id is not sufficient
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyQuestion.Title">
+            <summary>
+            The question or a summary of the question
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyQuestion.Description">
+            <summary>
+            A more in-depth description of the question
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyQuestion.Required">
+            <summary>
+            If true, an answer to this question is required
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyQuestion.QuestionType">
+            <summary>
+            The type of question this represents.
+            Unknown = 0,
+            Text = 1,
+            Scale = 2
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyQuestion.QuestionScale">
+            <summary>
+            If the answer to this question is an integer in a range, populate this value
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyQuestion.QuestionText">
+            <summary>
+            If the answer to this question is a plain text, populate this value
+            </summary>
+        </member>
+        <member name="T:Api.Models.Surveys.SurveyQuestion.SurveyQuestionType">
+            <summary>
+            The types of questions
+            </summary>
+        </member>
+        <member name="T:Api.Models.Surveys.SurveyQuestion.SurveyQuestionScale">
+            <summary>
+            A question where the answer is an integer in an interval
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyQuestion.SurveyQuestionScale.Min">
+            <summary>
+            Minimum value of the response
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyQuestion.SurveyQuestionScale.Max">
+            <summary>
+            Maximum value of the response
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyQuestion.SurveyQuestionScale.MinLabel">
+            <summary>
+            Description of what the minimum value represents
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyQuestion.SurveyQuestionScale.MaxLabel">
+            <summary>
+            Description of what the maximum value represents
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyQuestion.SurveyQuestionScale.Value">
+            <summary>
+            The default value of this question, or the response
+            </summary>
+        </member>
+        <member name="T:Api.Models.Surveys.SurveyQuestion.SurveyQuestionText">
+            <summary>
+            A question where the answer is plain text
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyQuestion.SurveyQuestionText.MultiLine">
+            <summary>
+            If true, display multiple lines. Otherwise, single line
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyQuestion.SurveyQuestionText.Value">
+            <summary>
+            The default value of this question, or the response
+            </summary>
+        </member>
+        <member name="T:Api.Models.Surveys.SurveyRecipient">
+            <summary>
+            Information about the recipient and the send options of a survey
+            </summary>
+        </member>
+        <member name="M:Api.Models.Surveys.SurveyRecipient.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Api.Models.Surveys.SurveyRecipient.#ctor(Api.Models.Surveys.SurveyNewRecipient)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="recipient">Optional new recipient to use as base</param>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyRecipient.Id">
+            <summary>
+            Id of the recipient
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyRecipient.Rev">
+            <summary>
+            Revision of the recipient (Id in database)
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyRecipient.SurveyId">
+            <summary>
+            Id of the survey which this recipient is attached to
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyRecipient.Ref">
+            <summary>
+            Optional third-party Id/reference. Uniqueness not enforced nor required
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyRecipient.Name">
+            <summary>
+            Name of the recipient
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyRecipient.EmailAddress">
+            <summary>
+            Email address of the recipient
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyRecipient.MobilePhone">
+            <summary>
+            Mobile phone number of the recipient
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyRecipient.InvitationMethod">
+            <summary>
+            The method to use when sending the survey to the recipient
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyRecipient.SendTime">
+            <summary>
+            The scheduled time to send the survey
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyRecipient.RemindTime">
+            <summary>
+            The time to send a reminder to the recipient if he/she has not answered
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyRecipient.CallbackUri">
+            <summary>
+            The Uri to call when the survey has been answered or the status has been changed
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyRecipient.SentTime">
+            <summary>
+            The time the survey was actually sent
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyRecipient.RemindedTime">
+            <summary>
+            The time the reminder was actually sent
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyRecipient.OpenedTime">
+            <summary>
+            The time the recipient opened the survey the first time
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyRecipient.RespondedTime">
+            <summary>
+            The time the recipient responded to the survey
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyRecipient.CallbackCallCount">
+            <summary>
+            The number of times that the callback has been attempted
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyRecipient.CallbackCallSuccess">
+            <summary>
+            If a callback succeeds, set to true. If not, set to false
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyRecipient.CallbackCalledTime">
+            <summary>
+            The time the callback was attempted
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveyRecipient.Status">
+            <summary>
+            Current status of this recipient .
+            Template = 0,
+            Scheduled = 1,
+            Sent = 2,
+            Opened = 3,
+            Responded = 4,
+            Canceled = 5,
+            Deleted = 6,
+            Error = 999,
+            </summary>
+        </member>
+        <member name="T:Api.Models.Surveys.SurveySection">
+            <summary>
+            A section of a survey containing questions
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveySection.Title">
+            <summary>
+            Title of section
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveySection.Description">
+            <summary>
+            Description of the section
+            </summary>
+        </member>
+        <member name="P:Api.Models.Surveys.SurveySection.Questions">
+            <summary>
+            List of questions in this section
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingArticle.ArticleId">
+            <summary>
+            The ID of the article
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingArticle.ArticleGroupId">
+            <summary>
+            The article group ID this article belongs to
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingArticle.UnitId">
+            <summary>
+            The unit ID this article booking belongs to
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingArticle.DepartmentId">
+            <summary>
+            Comma-separated list of department IDs this article is connected to
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingArticle.Start">
+            <summary>
+            Start time of this article booking
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingArticle.End">
+            <summary>
+            End time of this article booking
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingArticle.Name">
+            <summary>
+            Full name of this article
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingArticle.TableName">
+            <summary>
+            Table name that is shown on the table map (only for non-table articles)
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingArticle.TableNumber">
+            <summary>
+            The table number in string format (only for non-table articles)
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingArticle.TableChairs">
+            <summary>
+            Number of chairs available on this table (only for non-table articles)
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingArticle.Message">
+            <summary>
+            Text note on this article
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingArticle.Quantity">
+            <summary>
+            The quantity of this article that have been booked (only for non-table articles)
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingArticle.IsTable">
+            <summary>
+            Indicates if this article is a table
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingFinalizeParameters.Contact">
+            <summary>
+            The contact connected to this booking
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingFinalizeParameters.Message">
+            <summary>
+            The message to include in booking.
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingCreateParameters.Times">
+            <summary>
+            The times to book.
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingCreateParameters.Guests">
+            <summary>
+            The number of guests to book (including children).
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingCreateParameters.GuestsChildren">
+            <summary>
+            The number of guests who are children.
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingCreateParameters.Contact">
+            <summary>
+            The contact connected to this booking. Required, if IsPending = false
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingCreateParameters.Message">
+            <summary>
+            The message to include in booking.
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingCreateParameters.IsPending">
+            <summary>
+            Indicates if the booking is pending, which will delete the booking automatically if the booking is not updated to be non-pending. For normal finalized bookings, this should always be set to false
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingCreateParameters.WebBookingCreateParametersRuleTime.RuleId">
+            <summary>
+            The ID of the time rule to book in.
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingCreateParameters.WebBookingCreateParametersRuleTime.Start">
+            <summary>
+            The time unit to book in the given rule.
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBooking.Guid">
+            <summary>
+            The GUID of the booking
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBooking.UnitId">
+            <summary>
+            The unit ID
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBooking.Start">
+            <summary>
+            The start time of the booking
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBooking.End">
+            <summary>
+            The end time of the booking
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBooking.Status">
+            <summary>
+            The status of this booking
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBooking.Guests">
+            <summary>
+            Number of guests in this booking (including children)
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBooking.GuestsChildren">
+            <summary>
+            Number of guests in this booking who are children
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBooking.Message">
+            <summary>
+            A text message given to/from the guest
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBooking.CreatedDate">
+            <summary>
+            The creation time of the first version of this booking
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBooking.ChangeDate">
+            <summary>
+            The time this booking was last changed
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBooking.RecoupTime">
+            <summary>
+            Time allocated (in minutes) for cleaning, at the end of this booking
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBooking.Articles">
+            <summary>
+            Booked table articles.
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBooking.NonTableArticles">
+            <summary>
+            Booked non-table articles (e.g. menu items)
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBooking.ChargeType">
+            <summary>
+            Type of payment, only used if ChargeShouldPayAmount is > 0. 0 = PrePayment, 1 = NoShow, 2 = NoShowReservation, 3 = None
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBooking.ChargeId">
+            <summary>
+            A reference the a payment in an external system
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBooking.ChargeShouldPayAmount">
+            <summary>
+            The total amount to pay for this booking
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBooking.ChargeShouldPayVat">
+            <summary>
+            The VAT rate on the charge, 0.15 equals 15%
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBooking.ChargeShouldPayAmountVat">
+            <summary>
+            The VAT amount on the charge
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBooking.ChargeAuthorizedAmount">
+            <summary>
+            The amount that has been authorized
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBooking.ChargePayedAmount">
+            <summary>
+            The total amount that has already been payed
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBooking.ChargeRefundedAmount">
+            <summary>
+            The total amount that has already been refunded
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBooking.Contact">
+            <summary>
+            The contact connected to this booking
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Calendar.CalendarDTO.#ctor">
+            <summary>
+            Default constructor needed for (de)serialization.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Calendar.CalendarDTO.#ctor(Api.Models.Common.Calendar.ICalendar,Api.Models.Common.DateAndTime.Date,Api.Models.Common.DateAndTime.Date)">
+            <summary>
+            Constructor for CalendarDTO from an ICalendar.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Calendar.CalendarDTO.Id">
+            <summary>
+            Id in DB?!
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Calendar.CalendarDTO.DateStringToDayInformation">
+            <summary>
+            Date string To DayInformation
+            </summary>
+        </member>
+        <member name="T:Api.Models.Common.Calendar.DayInformationDTO">
+            <summary>
+            DayInformationDTO
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Calendar.DayInformationDTO.#ctor">
+            <summary>
+            Default constructor needed for (de)serialization.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Calendar.DayInformationDTO.#ctor(Api.Models.Common.Calendar.DayInformation)">
+            <summary>
+            Constructor for DayInformationDTO from a DayInformation.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Calendar.DayInformationDTO.DayNameInCalendar">
+            <summary>
+            Day name in calendar.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Calendar.DayInformationDTO.DayTypeTagIds">
+            <summary>
+            DayTypeTags are categories of the day, e.g. "AllmänHelgdag", "RödDag", "LedigDag".
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Calendar.DayInformationDTO.OrdinaryDayTypeId">
+            <summary>
+            Weekday, e.g. "måndag".
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Calendar.DayInformationDTO.SpecialDayTypeIds">
+            <summary>
+            Special names of day, e.g. "julafton", "juldagen", "trettondagsafton", "trettondedag jul".
+            </summary>
+        </member>
+        <member name="F:Api.Models.Common.DateAndTime.Date.MinSystemValue">
+            <summary>
+            Min system date, e.g. used as date for initial system values such as first contract change point etc.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.DateAndTime.Date.#ctor(NodaTime.ZonedDateTime)">
+            <summary>
+            Creates a date from the local date part of a global date time.
+            </summary>
+            <param name="globalDateTime">globalDateTime</param>
+        </member>
+        <member name="M:Api.Models.Common.DateAndTime.Date.ToString">
+            <summary>
+            Returns an invariant ISO 8601 date string on the form "yyyy-MM-dd".
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.DateAndTime.Date.ToShortString">
+            <summary>
+            Returns an invariant non-ISO date string on the form "yyMMdd".
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.DateAndTime.Date.ParseExact(System.String)">
+            <summary>
+            Parse a ISO 8601 date string on form "yyyy-MM-dd" and throw exception on fail.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.DateAndTime.Date.ToLocalDate">
+            <summary>
+            Should mainly be used when creating LocalDateTime with "LocaDate + LocalTime".
+            </summary>
+            <returns>LocalDate</returns>
+        </member>
+        <member name="M:Api.Models.Common.DateAndTime.Date.ToSQlDateParameter">
+            <summary>
+            Converts the date to its reresentation as a .Net SQL-date parameter.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Models.Common.DateAndTime.Range`1.GetContainingRange(Api.Models.Common.DateAndTime.Range{`0})">
+            <summary>
+                Gets a range that contains this range and the given range.
+            </summary>
+        </member>
+        <member name="T:Api.Models.Common.Rules.ShiftRuleChangePoint">
+            <summary>
+            ShiftRuleChangePoint is a container for the different kinds of shift rules. Its purpose is to allow changes/breaks on shift rules.
+            NOTE: Changes/Breaks are on ShiftRuleChangePoint and not on individual types of rules.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Rules.ShiftRuleChangePoint.Id">
+            <summary>
+            BuiltIn/Hardcoded shift rule change points have negative values, standard and custom shift rule change points (stored in database) have positive values.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Rules.ShiftRuleChangePoint.DTO.#ctor">
+            <summary>
+            Deserializaion only.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Rules.MergedShiftRuleChangePoint.OriginTypesToOriginInformation">
+            <summary>
+            NOTE: Each ShiftRuleChangePoint should always be based on one hardcoded change point, but it can also be merged with a standard change points and/or a custom change point.
+            These different parts may have different effective at dates (that are valid for the whole duration of the change point in the time dictionary that contains the change point). 
+            NOTE: The origin type(s) with a date that matches the whole change point is/are the "main type(s)". All differences between this and the previous change point have this/these origin(s).
+            NOTE: All other origin type(s) are inherited from previous change points of the non-main type(s) that exist previous to this change point.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Rules.MergedShiftRuleChangePoint.DTO.#ctor">
+            <summary>
+            Deserializaion only.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Rules.ShiftRuleBaseEqualityComparer.Equals(Api.Models.Common.Rules.ShiftRuleBase,Api.Models.Common.Rules.ShiftRuleBase)">
+            <summary>
+            NOTE: Not comparing ShiftRuleOriginInformation.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.DateAndTime.TimeDictionary`1.#ctor(System.Collections.Generic.SortedDictionary{System.String,`0})">
+            <summary>
+            Automatic JSON deserialization will only work if all proterties with "private set" have constructor parameters with exactly matching names.
+            </summary>
+            <param name="_timeValues"></param>
+        </member>
+        <member name="P:Api.Models.Common.DateAndTime.TimeDictionary`1._timeValues">
+            <summary>
+            Is ISO-DateString to Value.
+            NOTE: Keys in a Dictionary has to be of standard BCL-types (not complex objects) in order to work with Json.Net-serialization.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Rules.ShiftRuleChangePointTimeDictionary.SetEnabledOnStandardShiftRule(Api.Models.Common.DateAndTime.Date,System.Guid,System.Boolean,System.Int64)">
+            <summary>
+            Sets enabled on a standard shift rule.
+            </summary>
+            <param name="effectiveAt"></param>
+            <param name="shiftRuleId"></param>
+            <param name="newEnabledValue"></param>
+            <param name="standardShiftRuleId">Id in StandardShiftRule database</param>
+        </member>
+        <member name="M:Api.Models.Common.Rules.ShiftRuleChangePointTimeDictionary.GetChangePointsToUpdate(Api.Models.Common.DateAndTime.Date,Api.Models.Common.Rules.ShiftRuleOriginType)">
+            <summary>
+            Returns all change points until next change point of same origin (with different effectiveAt date).
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Rules.ShiftRuleOriginInformation.ShiftRuleOriginType">
+            <summary>
+            Used in SQL-repository to distinguish built-in rules from customized rules stored in database.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Rules.ShiftRuleOriginInformation.DTO.#ctor">
+            <summary>
+            Deserializaion only.
+            </summary>
+        </member>
+        <member name="T:Api.Models.Common.Rules.ShiftRuleOriginType">
+            <summary>
+            Used in SQL-repository to distinguish built-in rules from customized rules stored in database.
+            </summary>
+        </member>
+        <member name="F:Api.Models.Common.Rules.ShiftRuleOriginType.BuiltInStandard">
+            <summary>
+            Built-in hardcoded standard rule from hardcoded change point.
+            </summary>
+        </member>
+        <member name="F:Api.Models.Common.Rules.ShiftRuleOriginType.HybridStandard">
+            <summary>
+            BuiltInStandard with Enabled/Disabled from database standard change point.
+            </summary>
+        </member>
+        <member name="F:Api.Models.Common.Rules.ShiftRuleOriginType.DataBaseCustom">
+            <summary>
+            Custom rule from datebase custom change point.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.CompanyInformation.Logotype">
+            <summary>
+            id string stored in database
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.CompanyInformation.LogotypeUrl">
+            <summary>
+            friendly Url for use on clients
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.CompanyInformation.Filename">
+            <summary>
+            Used for uploaded files from client
+            </summary>
+        </member>
+        <member name="T:Api.Models.Common.System.Modules">
+            <summary>
+            System modules.
+            </summary>
+        </member>
+        <member name="F:Api.Models.Common.System.Modules.TimeReportId">
+            <summary>
+            Stämpelklocka
+            </summary>
+            /// <summary>
+            Timrapport
+            </summary>
+        </member>
+        <member name="F:Api.Models.Common.System.Modules.DayReportId">
+            <summary>
+            Dagsavstämning.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.System.SystemPayrollInformation.#ctor">
+            <summary>
+                Default constructor needed for unit test PayrollSerializer_Can_Deserialize_Serialized, should not be used!
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.System.SystemPayrollInformation.#ctor(Api.Models.Common.System.Station,Api.Models.Common.System.ConfigValueStore,Api.Models.Common.Contract.ContractTree,Api.Models.Common.Calendar.CalendarCollection,System.Guid)">
+            <summary>
+                Standard constructor
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.System.SystemPayrollInformation.GetPayDate(System.Int32,System.Int32)">
+            <summary>
+            Returns ordinary PayDate for a given year and month, by checking banking days according to calendar.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.System.SystemPayrollInformation.RootStation">
+            <summary>
+            NOTE: The root station must have a timezone as that will be used as the system time zone.
+            It is usually the only time zone for one system, but child stations may have an override.
+            NOTE: The system time zone is used in views and also as default time zone for payroll accumulator transactions without any specified station (e.g. without any workingshift).
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.System.SystemPayrollInformation.SystemPayrollStartDate">
+            <summary>
+            First date (inclusive) where there can be any payroll events.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.System.SystemPayrollInformation.SystemPayrollEndDate">
+            <summary>
+            All payroll events has to be before this date (exclusive).
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.System.SystemPayrollInformation.PayDateCalendarId">
+            <summary>
+            Id of the calendar used to determine PayDate from PayDay.
+            TODO 2.1++: Having PayDateCalendarId on SystemPayrollInformation is not a generic solution. One employee can have different employments based on different contracts AND different contracts can have different rules on how to determine PayDate.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Utils.CollectionExtensions.Iterate``1(``0,System.Func{``0,``0})">
+            <summary>
+            Returns an infinite sequence of x, f(x), f(f(x)) etc.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="x"></param>
+            <param name="f"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Models.Common.Utils.CollectionExtensions.MaxBy``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})">
+            <summary>
+            Returns the maximum element of the given sequence, based on
+            the given projection.
+            </summary>
+            <remarks>
+            If more than one element has the maximum projected value, the first
+            one encountered will be returned. This overload uses the default comparer
+            for the projected type. This operator uses immediate execution, but
+            only buffers a single result (the current maximum element).
+            </remarks>
+            <typeparam name="TSource">Type of the source sequence</typeparam>
+            <typeparam name="TKey">Type of the projected element</typeparam>
+            <param name="source">Source sequence</param>
+            <param name="selector">Selector to use to pick the results to compare</param>
+            <returns>The maximum element, according to the projection.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="selector"/> is null</exception>
+            <exception cref="T:System.InvalidOperationException"><paramref name="source"/> is empty</exception>
+        </member>
+        <member name="M:Api.Models.Common.Utils.CollectionExtensions.MinBy``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})">
+            <summary>
+            Returns the minimal element of the given sequence, based on
+            the given projection.
+            </summary>
+            <remarks>
+            If more than one element has the minimal projected value, the first
+            one encountered will be returned. This overload uses the default comparer
+            for the projected type. This operator uses immediate execution, but
+            only buffers a single result (the current minimal element).
+            </remarks>
+            <typeparam name="TSource">Type of the source sequence</typeparam>
+            <typeparam name="TKey">Type of the projected element</typeparam>
+            <param name="source">Source sequence</param>
+            <param name="selector">Selector to use to pick the results to compare</param>
+            <returns>The minimal element, according to the projection.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="selector"/> is null</exception>
+            <exception cref="T:System.InvalidOperationException"><paramref name="source"/> is empty</exception>
+        </member>
+        <member name="M:Api.Models.Common.Utils.CollectionExtensions.MaxBy``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1},System.Collections.Generic.IComparer{``1})">
+            <summary>
+            Returns the maximum element of the given sequence, based on
+            the given projection and the specified comparer for projected values.
+            </summary>
+            <remarks>
+            If more than one element has the maximum projected value, the first
+            one encountered will be returned. This overload uses the default comparer
+            for the projected type. This operator uses immediate execution, but
+            only buffers a single result (the current maximum element).
+            </remarks>
+            <typeparam name="TSource">Type of the source sequence</typeparam>
+            <typeparam name="TKey">Type of the projected element</typeparam>
+            <param name="source">Source sequence</param>
+            <param name="selector">Selector to use to pick the results to compare</param>
+            <param name="comparer">Comparer to use to compare projected values</param>
+            <returns>The maximum element, according to the projection.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source"/>, <paramref name="selector"/> 
+            or <paramref name="comparer"/> is null</exception>
+            <exception cref="T:System.InvalidOperationException"><paramref name="source"/> is empty</exception>
+        </member>
+        <member name="M:Api.Models.Common.Utils.CollectionExtensions.MinBy``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1},System.Collections.Generic.IComparer{``1})">
+            <summary>
+            Returns the minimal element of the given sequence, based on
+            the given projection and the specified comparer for projected values.
+            </summary>
+            <remarks>
+            If more than one element has the minimal projected value, the first
+            one encountered will be returned. This overload uses the default comparer
+            for the projected type. This operator uses immediate execution, but
+            only buffers a single result (the current minimal element).
+            </remarks>
+            <typeparam name="TSource">Type of the source sequence</typeparam>
+            <typeparam name="TKey">Type of the projected element</typeparam>
+            <param name="source">Source sequence</param>
+            <param name="selector">Selector to use to pick the results to compare</param>
+            <param name="comparer">Comparer to use to compare projected values</param>
+            <returns>The minimal element, according to the projection.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source"/>, <paramref name="selector"/> 
+            or <paramref name="comparer"/> is null</exception>
+            <exception cref="T:System.InvalidOperationException"><paramref name="source"/> is empty</exception>
+        </member>
+        <member name="P:Api.Models.Common.Utils.FileContainer.File">
+            <summary>
+            File as a Base64 string (of a byte array).
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Utils.FileContainer.DefaultMimeType">
+            <summary>
+            Default Mime-Type, optional.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Utils.FileContainer.Metadata">
+            <summary>
+            Metadata, specific for the file generator and endpoint.
+            </summary>
+        </member>
+        <member name="T:Api.Models.Common.Utils.NodaTimeHelpers">
+            <summary>
+            NOTE: Also see NodaTimeExtensions!
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Utils.NodaTimeHelpers.DurationFromHoursDecimal(System.Decimal)">
+            <summary>
+            Creates a duratino from a decimal value with hours.
+            </summary>
+            <param name="hours"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Models.Common.Utils.NodaTimeHelpers.GetGlobalDateTimeForLocalDayBreak(NodaTime.ZonedDateTime)">
+            <summary>
+            Returns global date time for local day break (when next day starts in local time).
+            </summary>
+            <param name="globalDateTime">Global date time</param>
+            <returns>Global date time of local day break</returns>
+        </member>
+        <member name="T:Api.Models.Common.Utils.NodaTimeExtensions">
+            <summary>
+            NOTE: Also see NodaTimeHelpers.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Utils.NodaTimeExtensions.TotalHours(NodaTime.Duration)">
+            <summary>
+            Custom (extension) method that returns the duration in hours as a decimal value.
+            </summary>
+            <param name="duration"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Models.Common.Utils.NodaTimeExtensions.PlusHoursDecimal(NodaTime.ZonedDateTime,System.Decimal)">
+            <summary>
+            Custom (extension) method that returns the result from adding decimal value with hours.
+            </summary>
+            <param name="globalDateTime"></param>
+            <param name="hours">Decimal hours value</param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Models.Common.Utils.NodaTimeExtensions.MinusHoursDecimal(NodaTime.ZonedDateTime,System.Decimal)">
+            <summary>
+            Custom (extension) method that returns the result from subtracting decimal value with hours.
+            </summary>
+            <param name="globalDateTime"></param>
+            <param name="hours">Decimal hours value</param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Models.Common.Utils.NodaTimeExtensions.InZoneFirstOccurrence(NodaTime.LocalDateTime,NodaTime.DateTimeZone)">
+            <summary>
+            Custom (extension) method that converts LocalDateTime into the first valid ZonedDateTime.
+            NOTE: The method will assume that the local date time is the first occurance of that time on that day, e.g. on switch from daylight saving time (DST) in Sweden, 02:00 will result in 02:00 UTC+2 (and not 02:00 UTC+1).
+            NOTE: It is suitble to be used for the Start time of an interval while using InZoneSecondOccurrence for the End time of the interval.
+            </summary>
+            <param name="localDateTime"></param>
+            <param name="timeZone"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Models.Common.Utils.NodaTimeExtensions.InZoneSecondOccurrence(NodaTime.LocalDateTime,NodaTime.DateTimeZone)">
+            <summary>
+            Custom (extension) method that converts LocalDateTime into the first valid ZonedDateTime.
+            NOTE: The method will assume that the local date time is the second occurance of that time on that day, e.g. on switch from daylight saving time (DST) in Sweden, 02:00 will result in 02:00 UTC+1 (and not 02:00 UTC+2).
+            NOTE: It is suitble to be used for the End time of an interval while using inZone InZoneFirstOccurrence for the Start time of the interval.
+            </summary>
+            <param name="localDateTime"></param>
+            <param name="timeZone"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Models.Common.Utils.NodaTimeExtensions.ToZonedDateTime(NodaTime.OffsetDateTime,NodaTime.DateTimeZone)">
+            <summary>
+            Custom (extension) method that converts OffsetDateTime into a proper ZonedDateTime.
+            NOTE: This method should always be used instead of InFixedZone(),
+             as that method is dangerous with arithmetics as it will use a fixed timezone and hence not adjust to account for daylight savings time.
+            </summary>
+            <param name="globalDateTime"></param>
+            <param name="timeZone"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Models.Common.Utils.NodaTimeExtensions.AtLocalMidnight(NodaTime.ZonedDateTime)">
+            <summary>
+            Custom (extension) method that converts ZonedDateTime to same date at midnight.
+            </summary>
+            <param name="globalDateTime"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Models.Common.Utils.NodaTimeExtensions.ToLocalShortISOString(NodaTime.ZonedDateTime)">
+            <summary>
+            Custom (extension) method that converts the global date time into a string of the local date time formatted as an ISO-string with minute precision.
+            </summary>
+            <param name="globalDateTime"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Models.Common.Utils.NodaTimeExtensions.ToLocalShortISOString(NodaTime.OffsetDateTime,NodaTime.DateTimeZone)">
+            <summary>
+            Custom (extension) method that converts the global date time into a string of the local date time formatted as an ISO-string with minute precision.
+            </summary>
+            <param name="globalDateTime"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Models.Common.Utils.NodaTimeExtensions.ToTimePoint(NodaTime.LocalTime)">
+            <summary>
+            Custom (extension) method that converts the local time into a TimePoint.
+            </summary>
+            <param name="localTime"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Models.Common.Utils.NodaTimeExtensions.ToTimePoint(System.Nullable{NodaTime.LocalTime})">
+            <summary>
+            Custom (extension) method that converts the local time into a TimePoint.
+            </summary>
+            <param name="localTime"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Models.Common.Utils.NodaTimeExtensions.ToDate(NodaTime.LocalDate)">
+            <summary>
+            Custom (extension) method that converts the local date into a Date.
+            </summary>
+            <param name="localDate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Models.Common.Utils.NodaTimeExtensions.ToDate(System.Nullable{NodaTime.LocalDate})">
+            <summary>
+            Custom (extension) method that converts the local date into a Date.
+            </summary>
+            <param name="localDate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Models.Common.Utils.TimeSpanHelpers.GetTotalHours(System.TimeSpan)">
+            <summary>
+            Returns TotalHours as decimal.
+            </summary>
+            <param name="timeSpan">timeSpan</param>
+            <returns>total hours</returns>
+        </member>
+        <member name="F:Api.Models.Common.Warning.WarningSolutionType.Technical">
+            <summary>
+            Technical warnings such as Nullpointers and missing data that none in Caspeco support will be able so solve.
+            </summary>
+        </member>
+        <member name="F:Api.Models.Common.Warning.WarningSolutionType.Advanced">
+            <summary>
+            Warnings that only some Casepco support or product owners can solve.
+            </summary>
+        </member>
+        <member name="F:Api.Models.Common.Warning.WarningSolutionType.Intermediate">
+            <summary>
+            Warnings that Caspeco support, and perhaps advanced end users, can solve.
+            </summary>
+        </member>
+        <member name="F:Api.Models.Common.Warning.WarningSolutionType.Basic">
+            <summary>
+            Basic warnings that can be solved by the end user (with the right permission).
+            </summary>
+        </member>
+        <member name="F:Api.Models.Common.Warning.WarningSolutionType.Trivial">
+            <summary>
+            Very basic warnings that should be caught in GUI validation and should be solved directly by the end user. These may be filtered out of some warnings lists.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Bookings.TableLayout.GetSubTableIds">
+            <summary>
+            If this is a virtual table, get the subtables.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Api.Models.Common.Contract.LocalProfession.Enabled">
+            <summary>
+            Local professions can never be deleted, but they can be disabled/inactivated.
+            </summary>
+        </member>
+        <member name="T:Api.Models.Common.Calendar.DayInformation">
+            <summary>
+            Information about a specific date including which day cateories (tags) that matches the date, e.g. Monday, OridnaryDay and PublicHoliday etc.
+            </summary>
+        </member>
+        <member name="F:Api.Models.Common.Calendar.DayInformation.DayNameInCalendar">
+            <summary>
+            Day name in calendar.
+            </summary>
+        </member>
+        <member name="F:Api.Models.Common.Calendar.DayInformation.DayTypeTags">
+            <summary>
+            Tags or category of the day, e.g. "AllmänHelgdag", "RödDag", "LedigDag".
+            </summary>
+        </member>
+        <member name="F:Api.Models.Common.Calendar.DayInformation.OrdinaryDayTypeId">
+            <summary>
+            Weekday, e.g. "måndag".
+            </summary>
+        </member>
+        <member name="F:Api.Models.Common.Calendar.DayInformation.SpecialDayTypeIds">
+            <summary>
+            Special names of day, e.g. "julafton", "juldagen", "trettondagsafton", "trettondedag jul".
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Calendar.DayInformation.#ctor">
+            <summary>
+            Default constructor needed for (de)serialization.
+            </summary>
+        </member>
+        <member name="T:Api.Models.Common.Calendar.DayTypeTag">
+            <summary>
+            TODO 2.0+: Change to Struct and implement equals, to simplify comparisons after deserialization.
+            </summary>
+        </member>
+        <member name="F:Api.Models.Common.Calendar.DayTypeTag.OrdinaryDayId">
+            <summary>
+            Day type id for ordinary non-special day in the calendar.
+            </summary>
+        </member>
+        <member name="F:Api.Models.Common.Calendar.DayTypeTag.SpecialDayId">
+            <summary>
+            Day type id for special day in the calendar.
+            </summary>
+        </member>
+        <member name="F:Api.Models.Common.Calendar.DayTypeTag.EveryDayId">
+            <summary>
+            Day type id that includes every day in the calendar.
+            </summary>
+        </member>
+        <member name="F:Api.Models.Common.Calendar.DayTypeTag.RedDayId">
+            <summary>
+            Day type id for days that "are red in the calendar". In the Swedish calendar this is public holidays and Sundays.
+            Used in the Webplatform (GUI) for special "red day" style.
+            </summary>
+        </member>
+        <member name="F:Api.Models.Common.Calendar.DayTypeTag.PublicHolidayId">
+            <summary>
+            Public (legal) holiday id.
+            </summary>
+        </member>
+        <member name="F:Api.Models.Common.Calendar.DayTypeTag.OrdinaryDay">
+            <summary>
+                Måndag, ..., Söndag.
+            </summary>
+        </member>
+        <member name="F:Api.Models.Common.Calendar.DayTypeTag.SpecialDay">
+            <summary>
+                Speciell dag.
+            </summary>
+        </member>
+        <member name="T:Api.Models.Common.Calendar.ICalendar">
+            <summary>
+            Interface for all Calendars in MARC.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Calendar.ICalendar.GetCalendarId">
+            <summary>
+            CalendarId is more of a calendar type, e.g. SE, than an instance id.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Calendar.ICalendar.GetDayTypes">
+            <summary>
+            Returns all ordinary and special days in the given Calendar, e.g. "måndag", "julafton", "juldagen".
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Models.Common.Calendar.ICalendar.GetDayTypeTags">
+            <summary>
+            Returns all tags or categories a day may have in the given Calendar, e.g. "AllmänHelgdag", "RödDag", "LedigDag".
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Calendar.ICalendar.GetDayInformation(Api.Models.Common.DateAndTime.Date)">
+            <summary>
+            Returns information about a specific date including which day cateories (tags) that matches the date, e.g. Monday, OridnaryDay and PublicHoliday etc.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Calendar.ICalendar.ValidDayTypeTagCombination(System.Collections.Generic.List{Api.Models.Common.Calendar.DayTypeTag})">
+            <summary>
+            Returns true if a given day type datg combination is valid.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Calendar.ICalendar.GetClosestWorkdayDateOnOrBefore(Api.Models.Common.DateAndTime.Date)">
+            <summary>
+            Returns date of closest 'Workday/Non holiday day/Banking day' on or before given date. 
+            For SwedishCalendar this is 'Vardag'.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.System.ConfigValueStore.#ctor">
+            <summary>
+                Default constructor needed for unit test PayrollSerializer_Can_Deserialize_Serialized, should not be used!
+            </summary>
+        </member>
+        <member name="T:Api.Models.Common.System.ConfigValueStore.DomainContext">
+            <summary>
+            Domain context can be used to specify station and/or employee etc, e.g. to override/customize a ConfigValue for a specific station.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Contract.AccumulatorDefinition.#ctor">
+            <summary>
+                Default constructor needed for serialization, should not be used!
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Contract.AccumulatorDefinition.Metadata">
+            <summary>
+                Metadata is used for report generators (and not the payroll engine: the payroll engine uses properties).
+                E.g. SalarySpecification.SpecificationRow.Render:IfNotZero, SalarySpecification.SaldoRow.Render:ThisMonthAndYear,
+                KU:12 or KUruta:60.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Contract.Contract.ShiftRuleGroups">
+            <summary>
+            ShiftRuleGroups. These have no (time)breaks. 
+            NOTE: Breaks on ShiftRuleGroups creates trouble for employment views in GUI as they have to deal with both contract break and employment break, e.g. handling "enable rule groups on employment" when rule groups change in the future.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Contract.Contract.ShiftRuleChangePoints">
+            <summary>
+            Date dependent ShiftRuleProperties (collection of ShiftPieceRules, DayRules and BreakRules).
+            Support change/break per whole ShiftRuleProperties.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Contract.Contract.LocalProfessions">
+            <summary>
+            Local professions. Employments can only have local professions.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Contract.Contract.Professions">
+            <summary>
+            All professions. These are the basis for any local professions.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Contract.Contract.ContractEmploymentProperties">
+            <summary>
+            Properties on employments specific to given contract.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Contract.Contract.ScheduledContractNoficiation">
+            <summary>
+                Notifications are used to schedule reminders about known future contract maintainance , e.g. to update som OB-values
+                next year or when the current contract agremeent ends.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Contract.Contract.DTO.#ctor">
+            <summary>
+            Deserializaion only.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Contract.ContractTree.GetAllNodes">
+            <summary>
+            Returns all contract tree nodes, e.g. both contracts and contracts containers.
+            </summary>
+            <returns>All nodes</returns>
+        </member>
+        <member name="M:Api.Models.Common.Contract.ContractTree.GetEnabledNodes">
+            <summary>
+            Returns all nodes, e.g. contracts and container contracts, that either are enabled themselves or have enabled children.
+            This is useful as container contracts (as of 2015-06-02) don't have a set value for the enabled property.
+            </summary>
+            <returns>Enabled nodes</returns>
+        </member>
+        <member name="M:Api.Models.Common.Contract.ContractTree.GetContractTreeWithEnabledNodes">
+            <summary>
+            Returns ContractTree that only contains nodes that either are enabled themselves or have enabled children.
+            </summary>
+            <returns>Contract tree</returns>
+        </member>
+        <member name="M:Api.Models.Common.Contract.ContractTree.GetContractByPath(System.String)">
+            <summary>
+            Returns contract with matching path.
+            NOTE: Does not return contract containers.
+            </summary>
+            <param name="path">Contract path</param>
+            <returns>Contract</returns>
+        </member>
+        <member name="M:Api.Models.Common.Contract.ContractTree.GetContractById(System.Guid)">
+            <summary>
+            Returns contract with matching ContractId Guid.
+            NOTE: Does not return contract containers.
+            </summary>
+            <param name="contractId">ContractId</param>
+            <returns>Contract</returns>
+        </member>
+        <member name="M:Api.Models.Common.Contract.ContractTree.GetNodeById(System.Guid)">
+            <summary>
+            Returns node, e.g. contract or container contract, with matching ContractId Guid.
+            </summary>
+            <param name="contractId">ContractId</param>
+            <returns>Contract</returns>
+        </member>
+        <member name="M:Api.Models.Common.Contract.PayrollDataDefinition.#ctor">
+            <summary>
+                Only used in serialization.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Contract.Metadata.#ctor">
+            <summary>
+                Default constructor needed for unit test PayrollSerializer_Can_Deserialize_Serialized, should not be used!
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Contract.MetadataCollection.#ctor">
+            <summary>
+                Default constructor needed for unit test PayrollSerializer_Can_Deserialize_Serialized, should not be used!
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Contract.PayrollArticleDefinition.ChildFormula">
+            <summary>
+                Formula run while creating children
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Contract.PayrollArticleDefinition.Formula">
+            <summary>
+                Formula run for the article definition.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Contract.PayrollArticleDefinition.ExecuteFormula">
+            <summary>
+                How often the formula is run (daily / once / ...).
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Contract.PayrollArticleDefinition.ShiftPieceFormula">
+            <summary>
+                Formula run for each shiftPiece of a salary article instance, e.g. for shift hours excluding break.
+                NOTE: Might add sepparate property "WorkingShiftFormula" in the future, if a need arises.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Contract.PayrollArticleDefinition.Metadata">
+            <summary>
+                Metadata is used for report generators (and not the payroll engine: the payroll engine uses properties).
+                Examples: SalarySpecification.SpecificationRow.Render:IfNotZero,
+                SalarySpecification.SpecificationRow.RenderLevel:true,
+                SalarySpecification.SpecificationRow.SortOrderGroup:21000,
+                SalarySpecification.SpecificationRow.SortOrderWithinGroup:21200,
+                SalarySpecification.SpecificationRow.AsOneRowWithDatesFromRoot:true,
+                SalarySpecification.SaldoRow.SortOrderGroup:23000, SalarySpecification.SaldoRow.Render:ThisMonthAndYear,
+                timereport.absencetype:Sjuk
+                KU:12 or KUruta:60.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.DateAndTime.GlobalDateTimeRange.GetDateTimeRangeWithinLocalTimeRange(Api.Models.Common.DateAndTime.TimeRange)">
+            <summary>
+                Returns the intersections between DateTimeRange and daily DateTimeRanges from TimeRange.
+                NOTE: A TimeRange with identical FromInclusive and ToExclusive will always return null, e.g the TimeRange 12:00 to
+                12:00.
+                NOTE: Handles daylight saving time (DST) switches generously, by choosing the first occurance for the Start time and the last occurance for the End time.
+            </summary>
+        </member>
+        <member name="F:Api.Models.Common.DateAndTime.TimePoint.DayBreak">
+            <summary>
+                DayBreak is 00:00.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.DateAndTime.TimePoint.ToSQlTimeParameter">
+            <summary>
+            Converts the time to its reresentation as a .Net SQL-time parameter.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:Api.Models.Common.Contract.ProfessionOriginType.General">
+            <summary>
+            sv. Allmän
+            </summary>
+        </member>
+        <member name="F:Api.Models.Common.Contract.ProfessionOriginType.BranchProfession">
+            <summary>
+            sv. Branschyrke
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Contract.Profession.Name">
+            <summary>
+            sv. Yrkesnamn
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Contract.Profession.Code">
+            <summary>
+            sv. Yrkeskod (nykkod)
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Contract.Profession.Status">
+            <summary>
+            sv. Jobbstatus
+            </summary>
+        </member>
+        <member name="T:Api.Models.Common.Rules.ShiftRuleBase">
+            <summary>
+            The base class for properties needed for all kinds of shift rules.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Rules.ShiftRuleBase.#ctor">
+            <summary>
+                Default constructor needed for unit test PayrollSerializer_Can_Deserialize_Serialized, should not be used!
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Rules.ShiftRuleBase.#ctor(System.Int64,System.Guid,System.Guid,Api.Models.Common.System.StationSelector,System.Collections.Generic.List{Api.Models.Common.Calendar.DayTypeTag},System.String,System.Boolean)">
+            <summary>
+                Standard constructor.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Rules.ShiftRuleBase.#ctor(Api.Models.Common.Rules.ShiftRuleBase)">
+            <summary>
+            Copy constructor.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Rules.ShiftRuleBase.HasFromDayTypeTag(System.String)">
+            <summary>
+            Returns true if the rule has the given From DayTypeTag.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Rules.ShiftRuleBase.HasFromDayTypeTag(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Returns true if the rule has any of the given From DayTypeTags.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Rules.ShiftRuleBase.GetWarnings">
+            <summary>
+            Validates rule and returns a list of warnings.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Rules.ShiftRuleBase.Id">
+            <summary>
+            Primary key in database. 
+            BuiltIn/Hardcoded shift rules have negative values, customized rules (stored in database) have positive values.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Rules.ShiftRuleBase.ShiftRuleId">
+            <summary>
+            Shift rule id (Guid), is hardcoded for standard rules and saved in DB for custom rules.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Rules.ShiftRuleBase.ShiftRuleGroupId">
+            <summary>
+            Each shift rule must belong to a rule group such as VisitaHRF.BreakRules.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Rules.ShiftRuleBase.StationSelector">
+            <summary>
+            Which station the shifts must belong to in order to trigger the rule (given that all other conditions are satisfied).
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Rules.ShiftRuleBase.FromDayTypeTags">
+            <summary>
+                Which kind of day that may trigger the rule (given that all other conditions are satisfied).
+                VanligDag, Specialdag, AllmänHelgdag, RödDag, DagFöreRödDag, LedigDag, Måndag, ..., Söndag, Julafton, Juldagen etc.
+                FromDayTypeTag is checked on the Date of the FromInclusive on the EngineAbstractShift.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Rules.ShiftRuleBase.Description">
+            <summary>
+            Rule description.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Rules.ShiftRuleBase.Enabled">
+            <summary>
+            Enables or disables Rule. 
+            This is the only way to change enabled rules on a contract.
+            RuleGroups without any Enabled Rules should only be shown in Backoffice views and not on Employment views.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Rules.ShiftRuleBase.ExclusivityGroup">
+            <summary>
+            weird name but if several rules within a rule group belong to the same exlusivity group, only one of the rules can be enabled at the same time
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Rules.ShiftRuleBase.ShiftRuleOriginInformation">
+            <summary>
+            Information about the origin of the shift rule.
+            </summary>
+        </member>
+        <member name="T:Api.Models.Common.Rules.ShiftRuleBase.DayTypeTagType">
+            <summary>
+            Used in DB to distinguish FromDayTypeTags from ToDayTypeTags.
+            </summary>
+        </member>
+        <member name="T:Api.Models.Common.Rules.ShiftRuleBase.StationSelectorItemType">
+            <summary>
+            Used in DB to distinguish EnabledStation from DisabledStation in StationSelector.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Rules.ShiftRuleBase.DTO.#ctor">
+            <summary>
+            Deserializaion only.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Rules.BreakRule.#ctor">
+            <summary>
+                Default constructor needed for unit test PayrollSerializer_Can_Deserialize_Serialized, should not be used!
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Rules.BreakRule.#ctor(System.Int64,System.Guid,System.Guid,Api.Models.Common.System.StationSelector,System.Collections.Generic.List{Api.Models.Common.Calendar.DayTypeTag},System.Nullable{System.Decimal},System.Nullable{Api.Models.Common.DateAndTime.TimePoint},System.Decimal,Api.Models.Common.Rules.SubtractHoursRule,System.String,System.Boolean)">
+            <summary>
+                Standard constructor.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Rules.BreakRule.#ctor(Api.Models.Common.Rules.BreakRule)">
+            <summary>
+            Copy constructor.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Rules.BreakRule.IsValidRule">
+            <summary>
+            Returns true if the rule is valid (has zero warnings).
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Rules.BreakRule.GetWarnings">
+            <summary>
+            Validates rule and returns a list of warnings.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Rules.BreakRule.DTO.#ctor">
+            <summary>
+            Deserializaion only.
+            </summary>
+        </member>
+        <member name="T:Api.Models.Common.Rules.DayRule">
+            <summary>
+            Day rule, e.g. rule that applies to a whole date. 
+            Currently the only kind of day rule is food deductions (sv. kostavdrag), but day rules could be used for other kinds of rules in the future.
+            </summary>
+        </member>
+        <member name="F:Api.Models.Common.Rules.DayRule._maxInstancesPerBusinessDate">
+            <summary>
+            Currently the only valid value for maxInstancesPerBusinessDate is one (1), due to how DayRuleCalculator works.
+            It cannot handle ApplyIndividuallyOnEachWorkingShift=false and MaxInstancesPerBusinessDate != 1, see comment in DayRuleCalculator.
+            </summary>
+        </member>
+        <member name="F:Api.Models.Common.Rules.DayRule._afterHoursShouldBeWithinIntervalFromTimeToToTime">
+            <summary>
+                Currently the only valid value is true.
+            </summary>
+        </member>
+        <member name="F:Api.Models.Common.Rules.DayRule._applyIndividuallyOnEachWorkingShift">
+            <summary>
+                Currently the only valid value is false.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Rules.DayRule.#ctor">
+            <summary>
+                Default constructor needed for unit test PayrollSerializer_Can_Deserialize_Serialized, should not be used!
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Rules.DayRule.#ctor(System.Int64,System.Guid,System.Guid,Api.Models.Common.System.StationSelector,System.Collections.Generic.List{Api.Models.Common.Calendar.DayTypeTag},System.Nullable{Api.Models.Common.DateAndTime.TimePoint},System.Nullable{Api.Models.Common.DateAndTime.TimePoint},System.Nullable{System.Decimal},System.String,System.Boolean)">
+            <summary>
+                Standard constructor with some default values.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Rules.DayRule.#ctor(Api.Models.Common.Rules.DayRule)">
+            <summary>
+            Copy constructor.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Rules.DayRule.HasOverlap(System.Collections.Generic.IEnumerable{Api.Models.Common.DateAndTime.GlobalDateTimeRange})">
+            <summary>
+            Returns true if any of the given global date time ranges overlaps with the local time range of the Day rule.
+            </summary>
+            <param name="dateTimeRanges">Global date time range</param>
+        </member>
+        <member name="M:Api.Models.Common.Rules.DayRule.GetFromTimeToTimeTimeRange">
+            <summary>
+            Returns a TimeRange between FromTime (inclusive) and ToTime (exclusive). 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Models.Common.Rules.DayRule.IsValidRule">
+            <summary>
+            Returns true if the rule is valid (has zero warnings).
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Rules.DayRule.GetWarnings">
+            <summary>
+            Validates rule and returns a list of warnings.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Rules.DayRule.FromTime">
+            <summary>
+                Rule can either apply to any shift hours or hours within the DayRule's TimeRange specified by FromTime and ToTime. 
+                NOTE: This means that either neither or both of FromTimePoint and ToTimePoint has to be specified.
+                NOTE: Atleast either FromTime and ToTime or AfterHours has to be specified.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Rules.DayRule.ToTime">
+            <summary>
+                Rule can either apply to any shift hours or hours within the DayRule's TimeRange specified by FromTime and ToTime. 
+                NOTE: This means that either neither or both of FromTimePoint and ToTimePoint has to be specified.
+                NOTE: Atleast either FromTime and ToTime or AfterHours has to be specified.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Rules.DayRule.AfterHours">
+            <summary>
+                After the number of hours that the rule should be applied.
+                NOTE: Atleast either FromTime and ToTime or AfterHours has to be specified.
+                NOTE: WorkingShifts with GivenLengthInHours (no ToDate) are excluded.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Rules.DayRule.MaxInstancesPerBusinessDate">
+            <summary>
+                Max number of instances to create for WorkingShift starting on each business date.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Rules.DayRule.ApplyIndividuallyOnEachWorkingShift">
+            <summary>
+                Apply rule individually on each WorkingShift (not on the combination of all WorkingShifts starting on one business date).
+                Default is false, this is not an option in the GUI.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Rules.DayRule.UseShiftPiecesAsBasisInsteadOfWorkingShifts">
+            <summary>
+                Use TimePoint and hours from the ShiftPieces on a WorkingShift instead of values on the WorkingShift itself, e.g.
+                if breaks should be taken into account.
+                Default is true, this is not an option in the GUI.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Rules.DayRule.AfterHoursShouldBeWithinIntervalFromTimeToToTime">
+            <summary>
+                When comparing AfterHours against hours on WorkingShift(s)/ShiftPiece(s), only hours within range FromTimePoint to
+                ToTimePoint are inlcuded.
+                Default is true, this is not an option in the GUI.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Rules.DayRule.DTO.#ctor">
+            <summary>
+            Deserializaion only.
+            </summary>
+        </member>
+        <member name="T:Api.Models.Common.Rules.ShiftPieceRule">
+            <summary>
+            Shift piece rule, e.g. rule that applies to each shift piece (net lengths after break deductions). 
+            Currently the only kind of shift piece rule is compensation for inconvenient working hours (sv. OB-ersättning), but shift piece rules could be used for other kinds of rules in the future.
+            </summary>
+        </member>
+        <member name="F:Api.Models.Common.Rules.ShiftPieceRule.CHECK_FOR_RULES_STARTING_X_DAYS_BACK">
+            <summary>
+            Maximum length of rules that last longer than 24h by starting on a FromDayType and end on a ToDayType (most rules start on a FromDayType at FromTIme and end on the first ToTime after)
+            Maximum length is the number of days back that the ShiftPieceRuleCalculator will check if rules has been triggered by FromDayType for each shift piece, 
+            e.g.the interval between shiftPiece.date.subtract(CHECK_FOR_RULES_STARTING_X_DAYS_BACK) and shiftPiece.date. The rules must also last long enough to intersect the shift.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Rules.ShiftPieceRule.#ctor">
+            <summary>
+                Default constructor needed for unit test PayrollSerializer_Can_Deserialize_Serialized, should not be used!
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Rules.ShiftPieceRule.#ctor(System.Int64,System.Guid,System.Guid,Api.Models.Common.System.StationSelector,System.Collections.Generic.List{Api.Models.Common.Calendar.DayTypeTag},Api.Models.Common.DateAndTime.TimePoint,Api.Models.Common.DateAndTime.TimePoint,System.Int32,System.String,System.Boolean)">
+            <summary>
+                Constructor for fromDayTypeTags with some default values
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Rules.ShiftPieceRule.#ctor(Api.Models.Common.Rules.ShiftPieceRule)">
+            <summary>
+            Copy constructor.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Rules.ShiftPieceRule.IsValidRule">
+            <summary>
+            Returns true if the rule is valid (has zero warnings).
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Rules.ShiftPieceRule.GetWarnings">
+            <summary>
+            Validates rule and returns a list of warnings.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Rules.ShiftPieceRule.ToDayTypeTags">
+            <summary>
+                VanligDag, Specialdag, AllmänHelgdag, RödDag, DagFöreRödDag, LedigDag, Måndag, ..., Söndag, Julafton, Juldagen etc.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Rules.ShiftPieceRule.ToTime">
+            <summary>
+            //NOTE: Should be a TimePoint, Date part not properly tested
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Rules.ShiftPieceRule.Priority">
+            <summary>
+            Priority in case of conflicting rule. 1 is highest priority. 0 disbales conflict check, e.g. rules with priority zero will always be applied.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Rules.ShiftPieceRule.DTO.#ctor">
+            <summary>
+            Deserializaion only.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.System.Station.BusinessDateBreakTime">
+            <summary>
+            BreakTime is the first moment on each business date.
+            TODO: Neeed to decide how to specify BreakTime when a bussiness date starts before the ordinary day break. 
+            One way is to say that any TimePoint after 12:00 specifies that the business date starts before the ordinary day break (23:00).
+            Another way is to use negative values, either a negated TimePoint (-23:00) or the negative TimeSpan to add to the ordinary day break (-01:00).
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.System.Station.TimeZone">
+            <summary>
+            NOTE: Time zone in tzlib/IANA/Olson-format (not BCL-format), normally = DateTimeZoneProviders.Tzdb.GetZoneOrNull("Europe/Stockholm");
+            NOTE: TIMEZONE CAN NEVER BE CHANGED ON A STATION ONCE IT HAS BEEN USED IN A PAYROLLRUN, AS THAT MIGHT BREAK PAYROLL ACCUMULATOR TRANSACTIONS!
+             (the timezone of the station is used to map instants to local datetimes, as an instant only identifies a unique global time but not an unique local time).
+            Time zone is usually inherited from the parent station (e.g. originally from the rot station), by it may be overridden in by child stations.
+            </summary>
+        </member>
+        <member name="T:WebApi.Delta.Models.Delta`1">
+            <summary>
+                A class the tracks changes (i.e. the Delta) for a particular <typeparamref name="TEntityType" />.
+            </summary>
+            <typeparam name="TEntityType">TEntityType is the base type of entity this delta tracks changes for.</typeparam>
+        </member>
+        <member name="M:WebApi.Delta.Models.Delta`1.#ctor">
+            <summary>
+                Initializes a new instance of <see cref="T:WebApi.Delta.Models.Delta`1"/>.
+            </summary>
+        </member>
+        <member name="M:WebApi.Delta.Models.Delta`1.#ctor(System.Type)">
+            <summary>
+                Initializes a new instance of <see cref="T:WebApi.Delta.Models.Delta`1"/>.
+            </summary>
+            <param name="entityType">
+                The derived entity type for which the changes would be tracked.
+                <paramref name="entityType"/> should be assignable to instances of <typeparamref name="TEntityType"/>.
+            </param>
+        </member>
+        <member name="M:WebApi.Delta.Models.Delta`1.Clear">
+            <summary>
+                Clears the Delta and resets the underlying Entity.
+            </summary>
+        </member>
+        <member name="M:WebApi.Delta.Models.Delta`1.TrySetPropertyValue(System.String,System.Object)">
+            <summary>
+                Attempts to set the Property called <paramref name="name"/> to the <paramref name="value"/> specified.
+                <remarks>
+                    Only properties that exist on <see cref="P:WebApi.Delta.Models.Delta`1.EntityType"/> can be set.
+                    If there is a type mismatch the request will fail.
+                </remarks>
+            </summary>
+            <param name="name">The name of the Property</param>
+            <param name="value">The new value of the Property</param>
+            <returns>True if successful</returns>
+        </member>
+        <member name="M:WebApi.Delta.Models.Delta`1.TryGetPropertyValue(System.String,System.Object@)">
+            <summary>
+                Attempts to get the value of the Property called <paramref name="name"/> from the underlying Entity.
+                <remarks>
+                    Only properties that exist on <see cref="P:WebApi.Delta.Models.Delta`1.EntityType"/> can be retrieved.
+                    Both modified and unmodified properties can be retrieved.
+                </remarks>
+            </summary>
+            <param name="name">The name of the Property</param>
+            <param name="value">The value of the Property</param>
+            <returns>True if the Property was found</returns>
+        </member>
+        <member name="M:WebApi.Delta.Models.Delta`1.TryGetPropertyType(System.String,System.Type@)">
+            <summary>
+                Attempts to get the <see cref="T:System.Type"/> of the Property called <paramref name="name"/> from the underlying Entity.
+                <remarks>
+                    Only properties that exist on <see cref="P:WebApi.Delta.Models.Delta`1.EntityType"/> can be retrieved.
+                    Both modified and unmodified properties can be retrieved.
+                </remarks>
+            </summary>
+            <param name="name">The name of the Property</param>
+            <param name="type">The type of the Property</param>
+            <returns>Returns <c>true</c> if the Property was found and <c>false</c> if not.</returns>
+        </member>
+        <member name="M:WebApi.Delta.Models.Delta`1.TrySetMember(System.Dynamic.SetMemberBinder,System.Object)">
+            <summary>
+                Overrides the DynamicObject TrySetMember method, so that only the properties
+                of <see cref="P:WebApi.Delta.Models.Delta`1.EntityType"/> can be set.
+            </summary>
+        </member>
+        <member name="M:WebApi.Delta.Models.Delta`1.TryGetMember(System.Dynamic.GetMemberBinder,System.Object@)">
+            <summary>
+                Overrides the DynamicObject TryGetMember method, so that only the properties
+                of <see cref="P:WebApi.Delta.Models.Delta`1.EntityType"/> can be got.
+            </summary>
+        </member>
+        <member name="M:WebApi.Delta.Models.Delta`1.GetEntity">
+            <summary>
+                Returns the <see cref="P:WebApi.Delta.Models.Delta`1.EntityType"/> instance
+                that holds all the changes (and original values) being tracked by this Delta.
+            </summary>
+        </member>
+        <member name="M:WebApi.Delta.Models.Delta`1.GetChangedPropertyNames">
+            <summary>
+                Returns the Properties that have been modified through this Delta as an
+                enumeration of Property Names
+            </summary>
+        </member>
+        <member name="M:WebApi.Delta.Models.Delta`1.GetUnchangedPropertyNames">
+            <summary>
+                Returns the Properties that have not been modified through this Delta as an
+                enumeration of Property Names
+            </summary>
+        </member>
+        <member name="M:WebApi.Delta.Models.Delta`1.CopyChangedValues(`0)">
+            <summary>
+                Copies the changed property values from the underlying entity (accessible via <see cref="M:WebApi.Delta.Models.Delta`1.GetEntity"/>)
+                to the <paramref name="original"/> entity.
+            </summary>
+            <param name="original">The entity to be updated.</param>
+        </member>
+        <member name="M:WebApi.Delta.Models.Delta`1.CopyUnchangedValues(`0)">
+            <summary>
+                Copies the unchanged property values from the underlying entity (accessible via <see cref="M:WebApi.Delta.Models.Delta`1.GetEntity"/>)
+                to the <paramref name="original"/> entity.
+            </summary>
+            <param name="original">The entity to be updated.</param>
+        </member>
+        <member name="M:WebApi.Delta.Models.Delta`1.Patch(`0)">
+            <summary>
+                Overwrites the <paramref name="original" /> entity with the changes tracked by this Delta.
+                <remarks>The semantics of this operation are equivalent to a HTTP PATCH operation, hence the name.</remarks>
+            </summary>
+            <param name="original">The entity to be updated.</param>
+        </member>
+        <member name="M:WebApi.Delta.Models.Delta`1.Put(`0)">
+            <summary>
+                Overwrites the <paramref name="original" /> entity with the values stored in this Delta.
+                <remarks>The semantics of this operation are equivalent to a HTTP PUT operation, hence the name.</remarks>
+            </summary>
+            <param name="original">The entity to be updated.</param>
+        </member>
+        <member name="P:WebApi.Delta.Models.Delta`1.EntityType">
+            <summary>
+                The actual type of the entity for which the changes are tracked.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Exceptions.TimeValueNotFoundException.#ctor">
+            <summary>
+                Just create the exception
+            </summary>
+        </member>
+        <member name="M:Api.Models.Exceptions.TimeValueNotFoundException.#ctor(System.String)">
+            <summary>
+                Create the exception with description
+            </summary>
+            <param name="message">Exception description</param>
+        </member>
+        <member name="M:Api.Models.Exceptions.TimeValueNotFoundException.#ctor(System.String,System.Exception)">
+            <summary>
+                Create the exception with description and inner cause
+            </summary>
+            <param name="message">Exception description</param>
+            <param name="innerException">Exception inner cause</param>
+        </member>
+        <member name="M:Api.Models.Exceptions.TimeValueNotFoundException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+                Create the exception from serialized data.
+                Usual scenario is when exception is occured somewhere on the remote workstation
+                and we have to re-create/re-throw the exception on the local machine
+            </summary>
+            <param name="info">Serialization info</param>
+            <param name="context">Serialization context</param>
+        </member>
+        <member name="M:Api.Models.Exceptions.ConfigValueNotFoundException.#ctor">
+            <summary>
+                Just create the exception
+            </summary>
+        </member>
+        <member name="M:Api.Models.Exceptions.ConfigValueNotFoundException.#ctor(System.String)">
+            <summary>
+                Create the exception with description
+            </summary>
+            <param name="message">Exception description</param>
+        </member>
+        <member name="M:Api.Models.Exceptions.ConfigValueNotFoundException.#ctor(System.String,System.Exception)">
+            <summary>
+                Create the exception with description and inner cause
+            </summary>
+            <param name="message">Exception description</param>
+            <param name="innerException">Exception inner cause</param>
+        </member>
+        <member name="M:Api.Models.Exceptions.ConfigValueNotFoundException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+                Create the exception from serialized data.
+                Usual scenario is when exception is occured somewhere on the remote workstation
+                and we have to re-create/re-throw the exception on the local machine
+            </summary>
+            <param name="info">Serialization info</param>
+            <param name="context">Serialization context</param>
+        </member>
+        <member name="T:Api.Models.Files.IFiles">
+            <summary>
+                Subsystem to store, retrieve and reference files.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Files.IFiles.CreateFile(System.String,System.Byte[],Api.Models.Files.BlobFolder)">
+            <summary>
+                Create a `File`, used to combine a FileToken with data []
+            </summary>
+            <param name="filename"></param>
+            <param name="data"></param>
+            <param name="blobfolderId">Any of (pri|pub|logo)</param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Models.Files.IFiles.GetUrl(Api.Models.Files.FileToken)">
+            <summary>
+                Retrieve the HTTP Url used to access the file referenced in the filetoken.
+            </summary>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Api.Models.Files.FileToken">
+            <summary>
+                A token used to represent a file.
+                The token have multiple properties, all used to correctly represent a file.
+                .
+                .
+                Example of a filetoken in string format:
+                .
+                "1:pub:filename.pdf:guid"
+                .
+                {version}:{pri|pub|logo}:{filename}:{guidref}
+                --- ^ Used to parse different versions
+                ------------- ^ Used to shortcut links, if we have to through ACL software or not.
+                ------------------------ ^ Used to represent the file in UI
+                ---------------------------------- ^ Used to reference the actual file from storage
+            </summary>
+        </member>
+        <member name="F:Api.Models.Files.FileToken.Version">
+            <summary>
+                Version: Used by parsers. The FileToken has a string serialization which is affixed with the FileToken version.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Files.FileToken.#ctor(System.String)">
+            <summary>
+            Conststuct with id in "1:pub:filename.pdf:guid". Use this when initialize from just a string.
+            </summary>
+            <param name="fileTokenString"></param>
+        </member>
+        <member name="M:Api.Models.Files.FileToken.ToString">
+            <summary>
+                String representation of a filetoken. This is used in Urls or compact storage.
+            </summary>
+            <returns>{version}:{pri|pub|logo}:{filename}:{guid}</returns>
+        </member>
+        <member name="F:Api.Models.Files.BlobFolder.PrivateFiles">
+            <summary>
+            Used for private, requireACL, email attachments
+            </summary>
+        </member>
+        <member name="F:Api.Models.Files.BlobFolder.PublicFiles">
+            <summary>
+            Used for public email attachments
+            </summary>
+        </member>
+        <member name="F:Api.Models.Files.BlobFolder.Logotypes">
+            <summary>
+            Used for CompanyInformation logotypes
+            </summary>
+        </member>
+        <member name="P:Api.Models.History.HistoryItem`1.EntityId">
+            <summary>
+                The ID of the entity that is versioned.
+            </summary>
+        </member>
+        <member name="P:Api.Models.History.HistoryItem`1.RevisionId">
+            <summary>
+                Revision ID of this history item.
+            </summary>
+        </member>
+        <member name="P:Api.Models.History.HistoryItem`1.ModifiedByUserId">
+            <summary>
+                Who modified? -- TODO: remove
+            </summary>
+        </member>
+        <member name="P:Api.Models.History.HistoryItem`1.Subject">
+            <summary>
+                Who modified?
+            </summary>
+        </member>
+        <member name="P:Api.Models.History.HistoryItem`1.ModifiedByUserName">
+            <summary>
+                Copy of the user name: if the user is removed or modified, then we want to keep the original user name.
+            </summary>
+        </member>
+        <member name="P:Api.Models.History.HistoryItem`1.ModifiedAt">
+            <summary>
+                When was it modified?
+            </summary>
+        </member>
+        <member name="P:Api.Models.History.HistoryItem`1.Action">
+            <summary>
+                Insert, Update or Delete action.
+            </summary>
+        </member>
+        <member name="P:Api.Models.History.HistoryItem`1.ChangeSummary">
+            <summary>
+                TODO: A structured summary of the changes, can be used for showing e.g a change log to a user.
+            </summary>
+        </member>
+        <member name="P:Api.Models.History.HistoryItem`1.Data">
+            <summary>
+                Data associated with this row. TODO: delta or whole entity?
+            </summary>
+        </member>
+        <member name="T:LibLog.Logging.ILog">
+            <summary>
+            Simple interface that represent a logger.
+            </summary>
+        </member>
+        <member name="M:LibLog.Logging.ILog.Log(LibLog.Logging.LogLevel,System.Func{System.String},System.Exception)">
+            <summary>
+            Log a message the specified log level.
+            </summary>
+            <param name="logLevel">The log level.</param>
+            <param name="messageFunc">The message function.</param>
+            <param name="exception">An optional exception.</param>
+            <returns>true if the message was logged. Otherwise false.</returns>
+            <remarks>
+            Note to implementers: the message func should not be called if the loglevel is not enabled
+            so as not to incur performance penalties.
+            
+            To check IsEnabled call Log with only LogLevel and check the return value, no event will be written
+            </remarks>
+        </member>
+        <member name="T:LibLog.Logging.LogLevel">
+            <summary>
+            The log level.
+            </summary>
+        </member>
+        <member name="T:LibLog.Logging.ILogProvider">
+            <summary>
+            Represents a way to get a <see cref="T:LibLog.Logging.ILog"/>
+            </summary>
+        </member>
+        <member name="T:LibLog.Logging.LogProvider">
+            <summary>
+            Provides a mechanism to create instances of <see cref="T:LibLog.Logging.ILog"/> objects.
+            </summary>
+        </member>
+        <member name="M:LibLog.Logging.LogProvider.For``1">
+            <summary>
+            Gets a logger for the specified type.
+            </summary>
+            <typeparam name="T">The type whose name will be used for the logger.</typeparam>
+            <returns>An instance of <see cref="T:LibLog.Logging.ILog"/></returns>
+        </member>
+        <member name="M:LibLog.Logging.LogProvider.GetCurrentClassLogger">
+            <summary>
+            Gets a logger for the current class.
+            </summary>
+            <returns>An instance of <see cref="T:LibLog.Logging.ILog"/></returns>
+        </member>
+        <member name="M:LibLog.Logging.LogProvider.GetLogger(System.Type)">
+            <summary>
+            Gets a logger for the specified type.
+            </summary>
+            <param name="type">The type whose name will be used for the logger.</param>
+            <returns>An instance of <see cref="T:LibLog.Logging.ILog"/></returns>
+        </member>
+        <member name="M:LibLog.Logging.LogProvider.GetLogger(System.String)">
+            <summary>
+            Gets a logger with the specified name.
+            </summary>
+            <param name="name">The name.</param>
+            <returns>An instance of <see cref="T:LibLog.Logging.ILog"/></returns>
+        </member>
+        <member name="M:LibLog.Logging.LogProvider.SetCurrentLogProvider(LibLog.Logging.ILogProvider)">
+            <summary>
+            Sets the current log provider.
+            </summary>
+            <param name="logProvider">The log provider.</param>
+        </member>
+        <member name="P:LibLog.Logging.LoupeLogProvider.ProviderIsAvailableOverride">
+            <summary>
+            Gets or sets a value indicating whether [provider is available override]. Used in tests.
+            </summary>
+            <value>
+            <c>true</c> if [provider is available override]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:LibLog.Logging.LoupeLogProvider.WriteDelegate">
+            <summary>
+            The form of the Loupe Log.Write method we're using
+            </summary>
+        </member>
+        <member name="T:LibLog.Logging.ColouredConsoleLogProvider.MessageFormatterDelegate">
+            <summary>
+            A delegate returning a formatted log message
+            </summary>
+            <param name="loggerName">The name of the Logger</param>
+            <param name="level">The Log Level</param>
+            <param name="message">The Log Message</param>
+            <param name="e">The Exception, if there is one</param>
+            <returns>A formatted Log Message string.</returns>
+        </member>
+        <member name="P:Api.Models.Payroll.Employee.PersonalIdentity">
+            <summary>
+                Typically personal number for Sweden or social security number for the US.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Payroll.Employment.EmploymentNumber">
+            <summary>
+                Counter used in the UI (local counter for each employee: the employee has employment numbers 1, 2, 3, etc).
+            </summary>
+        </member>
+        <member name="P:Api.Models.Payroll.Employment.StartDate">
+            <summary>
+                StartDate is inclusive, e.g. FromDateInclusive
+            </summary>
+        </member>
+        <member name="P:Api.Models.Payroll.Employment.EndDate">
+            <summary>
+                EndDate is exclusive, e.g. ToDateExclusive. End date can either be an ordinary date or "Tillsvidare". 
+                Tillsvidare is implemented as null.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Payroll.Employment.PayrollsValidUntil">
+            <summary>
+            Date from where new PayrollRuns should be recaculated, e.g. new retroactive salary, change in salarycalculation,  workshifts, absences...
+            Null if no retroactive changes has been made. Should not be used on client side.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Payroll.Employment.SalaryPeriod">
+            <summary>
+            Salary period, e.g. "Släpande" or "Innevarande". Cannot change during an employment as of 2015-05-04.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Payroll.Employment.AbsencePeriod">
+            <summary>
+            Absence period, e.g. "Släpande" or "Innevarande". Cannot change during an employment as of 2015-05-04.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Payroll.Employment.ActiveStationId">
+            <summary>
+            TODO 2.0: Check specification with Micke/Per and verify implementation.
+            Id of the station that should be used as default when creating shifts in Timrapport and Dagsavstämmning.
+            Should be the id of the last station used for this employment in Stämpelklocka, Timrapport or Dagsavstämmning.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Payroll.EmploymentProperties.LocalProfessionId">
+            <summary>
+            Local profession Id of Main profession (sv HuvudyrkesId).
+            </summary>
+        </member>
+        <member name="P:Api.Models.Payroll.EmploymentProperties.DefaultStationId">
+            <summary>
+            Default stationId (sv. Organisationstillhörighet.) is very important as it is used for payroll transactions where stationId is not specified by the shift or payroll instance. 
+            StationId currently effects the timezone of the payroll transaction.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Payroll.EmploymentProperties.ContractEmploymentProperties">
+            <summary>
+                Employment properties (e.g. Wage, VacationDays) specified by the employment contract.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Rules.ShiftRuleGroup.#ctor">
+            <summary>
+                Default constructor needed for unit test PayrollSerializer_Can_Deserialize_Serialized, should not be used!
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Rules.ShiftRuleGroup.#ctor(System.Guid,System.String,System.String,Api.Models.Common.Rules.ShiftRuleGroupType,System.Boolean)">
+            <summary>
+                Standard constructor.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Common.Rules.ShiftRuleGroup.#ctor(System.Guid,System.String,System.String,Api.Models.Common.Rules.ShiftRuleGroupType,System.Boolean,System.Collections.Generic.Dictionary{System.Guid,Api.Models.Common.Contract.PayrollArticleDefinition})">
+            <summary>
+                Constructor for RuleGroup with parentToChildArticleDefinition.
+            </summary>
+        </member>
+        <member name="F:Api.Models.Common.Rules.ShiftRuleGroup._ruleGroupArticleDefinitionMappings">
+            <summary>
+            PayrollArticleDefinition mapping from parent payroll article definition to child payroll article defintion.
+            The rule group is only applied on payroll instances of specified parent payroll article definitions.
+            Is only appliable for DayRuleGroups and ShiftPieceRuleGroups, not BreakRuleGroups.
+            NOTE: RuleGroup mappings are currently NOT having (time)breaks. This could be added later if needed, but it makes the code more complex.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Rules.ShiftRuleGroup.Id">
+            <summary>
+            Id in database.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Common.Rules.ShiftRuleGroup.EnabledOnNewEmployments">
+            <summary>
+            Enables or disables RuleGroup on NEW employments. Does not effect existing employments.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Payroll.PayrollArticleInstance.DateRange">
+            <summary>
+                Date range (from date inclusive, to date exclusive).
+            </summary>
+        </member>
+        <member name="P:Api.Models.Payroll.PayrollArticleInstance.StationId">
+            <summary>
+                Optional override of default station on employment.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Payroll.PayrollArticleInstance.ExtraProfessionNumber">
+            <summary>
+            Set if article instance belongs to an additional profession (sv. Extrayrke).
+            NOTE: This is needed for instances belongs to an extraprofession if the instance does not have workingshifts and only has a quantity, e.g. Food-deduction instances, 
+            otherwise extraprofession should be specified on the working shifts.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Payroll.PayrollArticleInstance.OriginatingRuleGroupId">
+            <summary>
+            Originating rule group id if the instance is created from a day- or shiftpiecerule.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Payroll.PayrollArticleInstance.OriginalNonPeriodizedRootInstance">
+            <summary>
+            Needed for some formulas such as determining if an article spans a whole period.
+            TODO: Needed for non-engine instance ?
+            </summary>
+        </member>
+        <member name="P:Api.Models.Payroll.PayrollArticleInstance.IsRetroactive">
+            <summary>
+            Marks this instance as a retroactive change, e.g. due to a change on a locked month.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Payroll.PayrollRunApproved.Id">
+            <summary>
+            Id in database.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Payroll.PayrollRunApproved.EmployeeId">
+            <summary>
+            Part of primary key in database.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Payroll.PayrollRunApproved.PayrollRunDate">
+            <summary>
+            Part of primary key in database.
+            </summary>
+        </member>
+        <member name="T:Api.Models.Payroll.SalaryAbsencePeriodType">
+            <summary>
+            Used in DB to distinguish SalaryPeriods from AbsencePeriods.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Payroll.SalaryAbsencePeriod.#ctor">
+            <summary>
+                Default constructor needed for unit test PayrollSerializer_Can_Deserialize_Serialized, should not be used!
+            </summary>
+        </member>
+        <member name="T:Api.Models.Payroll.Warning.PayrollEmployeeWarning">
+            <summary>
+            Class for detailed Employee warning.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Payroll.Warning.PayrollEmployeeWarning.#ctor(Api.Models.Payroll.Warning.PayrollWarning,System.Int64,System.Int64,System.Int64)">
+            <summary>
+            Constructor for Employee warning relating to a shift.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Payroll.Warning.PayrollEmployeeWarning.#ctor(Api.Models.Payroll.Warning.PayrollWarning,System.Int64,System.Int64)">
+            <summary>
+            Constructor for Employee warning relating to an employment.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Payroll.Warning.PayrollEmployeeWarning.#ctor(Api.Models.Payroll.Warning.PayrollWarning,System.String)">
+            <summary>
+            Constructor for Employee warning relating to an employee.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Payroll.Warning.PayrollEmployeeWarning.#ctor">
+            <summary>
+            Default constructor needed for (de)serialization.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Payroll.Warning.PayrollEmployeeWarning.#ctor(Api.Models.Payroll.Warning.PayrollEmployeeWarning)">
+            <summary>
+            Copy constructor.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Payroll.Warning.PayrollEmployeeWarning.EmployeeId">
+            <summary>
+            Both intended as a key and to allow creating a link to related employee.  
+            </summary>
+        </member>
+        <member name="P:Api.Models.Payroll.Warning.PayrollEmployeeWarning.EmploymentId">
+            <summary>
+            Intended to allow creating a link to related employment.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Payroll.Warning.PayrollEmployeeWarning.ShiftId">
+            <summary>
+            Intended to allow creating a link to related WorkingShift.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Payroll.Warning.PayrollWarning.#ctor">
+            <summary>
+            Default constructor needed for (de)serialization.
+            </summary>
+        </member>
+        <member name="M:Api.Models.Payroll.Warning.PayrollWarning.#ctor(Api.Models.Payroll.Warning.PayrollWarningType,Api.Models.Common.Warning.WarningSolutionType,System.String,System.String,System.String)">
+            <summary>
+            Standard constructor.
+            </summary>
+        </member>
+        <member name="T:Api.Models.Payroll.Warning.PayrollWarningType">
+            <summary>
+            NOTE: Changes to these will break translations in svMessages.ts and enMessages.ts!
+            </summary>
+        </member>
+        <member name="F:Api.Models.Settings.SystemMode.Time">
+            <summary>
+            "Trivec"/"2.0"
+            </summary>
+        </member>
+        <member name="F:Api.Models.Settings.SystemMode.Salary">
+            <summary>
+            Full payroll system/"2.1"
+            </summary>
+        </member>
+        <member name="F:Api.Models.Settings.SystemMode.Full">
+            <summary>
+            Full = Salary + Booking
+            </summary>
+        </member>
+        <member name="F:Api.Models.Settings.SystemMode.Caddie">
+            <summary>
+            Caddie = Caddie :)
+            </summary>
+        </member>
+        <member name="P:Api.Models.Time.Break.FromTime">
+            <summary>
+                From date time in UTC. Both date and time are inclusive.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Time.Break.ToTime">
+            <summary>
+                
+                To date time in UTC. Date is inclusive while time is exclusive.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Time.Break.GivenLength">
+            <summary>
+            The length of the break, this can represent a timeless quantity or a ToTime if used together with FromTime.
+            Precision should be i minutes, never any seconds or smaller!
+            </summary>
+        </member>
+        <member name="T:Api.Models.Time.BreakType">
+            <summary>
+                BreakTypes:
+                ManualWithoutTime/ManualWithTime means that all breaks for a given shift has been created manually, e.g. in "Timrapport" or "Dagsavstämning".
+                Clocked means that all breaks for a given shift has been created by "Stämpelklockan".
+                Scheduled means that all breaks for a given shift should come from a schedule. This is not implemented as of 2015-02-19.
+                Automatic means that all breaks for a given shift should be created from break rules on the contract of the employment. 
+                Automatic breaks only have GivenLengthInHours and no FromTime or ToTime.
+                None means that no Breaks AND no ShiftPieces will be created by the PayrollEngine. This is used for some of the salary article instances that the PayrollEngine generates, e.g. "OB".
+                None is also used for simplified testing where ShiftPieces are defined by the test.
+                The different BreakTypes override each other according to the order above. 
+            </summary>
+        </member>
+        <member name="P:Api.Models.Time.IWorkingShiftBase.ExtraProfessionNumber">
+            <summary>
+            Set if shift belongs to an additional profession (sv. Extrayrke).
+            </summary>
+        </member>
+        <member name="P:Api.Models.Time.IWorkingShiftBase.GivenLength">
+            <summary>
+            Precision should be i minutes, never any seconds or smaller!
+            </summary>
+        </member>
+        <member name="P:Api.Models.Time.IWorkingShiftBase.OriginalBreakType">
+            <summary>
+            Original break type. Can only be: Clocked, Scheduled, Automatic or None.
+            OriginalBreakType should not be overwritten once set. 
+            </summary>
+        </member>
+        <member name="M:Api.Models.Time.WorkingShift.GetActiveBreaks">
+            <summary>
+            Returns manual breaks if ActiveBreakType is set to Manual, otherwise returns original breaks.
+            </summary>
+            <returns>breaks</returns>
+        </member>
+        <member name="M:Api.Models.Time.WorkingShift.GetActiveBreaksLength">
+            <summary>
+            Returns length of manual breaks if ActiveBreakType is set to Manual, otherwise returns length of original breaks.
+            </summary>
+            <returns>Combined lenght of all breaks</returns>
+        </member>
+        <member name="M:Api.Models.Time.WorkingShift.GetGrossLengthInHours">
+            <summary>
+            Returns length of WorkingShift without deducting any breaks (sv. Bruttotimmar).
+            </summary>
+            <returns>Length in hours</returns>
+        </member>
+        <member name="M:Api.Models.Time.WorkingShift.GetNetLengthInHours">
+            <summary>
+            Returns length of WorkingShift after deducting any breaks (sv. Nettotimmar).
+            </summary>
+            <returns>Length in hours</returns>
+        </member>
+        <member name="M:Api.Models.Time.WorkingShift.GetNetLengthInHoursInternal">
+            <summary>
+            Returns length of WorkingShift after deducting any breaks (sv. Nettotimmar).
+            </summary>
+            <returns>Length in hours</returns>
+        </member>
+        <member name="M:Api.Models.Time.WorkingShift.GetWarnings">
+            <summary>
+            Get warnings for checks that does not require any extra information such as SystemPayrollInformation, e.g. check InTime and OutTIme.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Time.WorkingShift.ExtraProfessionNumber">
+            <summary>
+            Set if shift belongs to an additional profession (sv. Extrayrke).
+            </summary>
+        </member>
+        <member name="P:Api.Models.Time.WorkingShift.InTime">
+            <summary>
+                In/From date time in UTC. Both date and time are inclusive.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Time.WorkingShift.OutTime">
+            <summary>
+                Out/To date time in UTC. Date is inclusive while time is exclusive.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Time.WorkingShift.GivenLength">
+            <summary>
+            Precision should be i minutes, never any seconds or smaller!
+            </summary>
+        </member>
+        <member name="P:Api.Models.Time.WorkingShift.OriginalBreaks">
+            <summary>
+            Original breaks are either set in constructor if "manual breaks" or by BreakRuleCalculator as preparation for a PayrollRun if "auto breaks".
+            Original breaks may in the future also be of type "scheduled breaks".  
+            </summary>
+        </member>
+        <member name="P:Api.Models.Time.WorkingShift.OriginalBreakType">
+            <summary>
+            Original break type. Can only be: Clocked, Scheduled, Automatic or None.
+            OriginalBreakType should not be overwritten once set. 
+            </summary>
+        </member>
+        <member name="P:Api.Models.Time.WorkingShift.ManualBreaks">
+            <summary>
+            Manual override of original breaks (if ActiveBreakType is set to Manual).
+            </summary>
+        </member>
+        <member name="P:Api.Models.Time.WorkingShift.OriginalDayRuleValues">
+            <summary>
+            Original rule group values per day, set as preparation for a PayrollRun.
+            Contains both day rule values set by DayRuleCalculator and the sum of all shift piece rules values per shift set by ShiftPieceRuleCalculator. 
+            NOTE: The OB-value is only intended to simplify access to the hours value in reports such as "Timrapport", 
+             it is not used for payroll calculations and can not be overriden with a manual day rule value (the payroll article instance created by ShiftPieceRuleCalculator is used for calculations).
+            Maps RuleGroupId to value.
+            Value is usually 0 or 1 for day rules and a positive decimal value for shift piece rules.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Time.WorkingShift.IsUnlockedShiftOnLockedMonth">
+            <summary>
+            This will be true if the shift was entered on a month after the month was locked (typically if the Clock was offline for some time).
+            </summary>
+        </member>
+        <member name="P:Api.Models.Time.WorkingShift.IncludedInPayrollRun">
+            <summary>
+            If the shift has been included in a payroll run, this is the paydate for that payroll run.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Time.WorkingShift.ManualDayRuleValues">
+            <summary>
+            Manual (override of) day rule values for rule groups, e.g. changes to "Kost", "Frukost" or "Lunch" made in "Timrapport" or "Dagsavstämning".
+            NOTE: Overrides for shift piece rules values are not supported.
+            Maps RuleGroupId to value. 
+            Value is usually 0 or 1.
+            </summary>
+        </member>
+        <member name="P:Api.Models.Time.WorkingShift.PayrollArticleInstanceId">
+            <summary>
+            The id of an article instance, if this workingshift belongs to an article instance (otherwise null).
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingContact.Fname">
+            <summary>
+            First name
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingContact.Lname">
+            <summary>
+            Last name
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingContact.Phone">
+            <summary>
+            Phone number
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingContact.Mobile">
+            <summary>
+            Mobile phone number
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingContact.Fax">
+            <summary>
+            Fax number
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingContact.Email">
+            <summary>
+            E-mail address
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingContact.Streetaddress">
+            <summary>
+            Street address
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingContact.Zipcode">
+            <summary>
+            Zip/postal code
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingContact.City">
+            <summary>
+            City
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingContact.AllowStoringForever">
+            <summary>
+            Indicates if the contact has allowed for the contact information to be stored forever in the system
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingPaymentOnly.Guid">
+            <summary>
+            The GUID of the booking
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingPaymentOnly.ChargeId">
+            <summary>
+            A reference the a payment in an external system
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingPaymentOnly.ChargeShouldPayAmount">
+            <summary>
+            The total amount to pay for this booking
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingPaymentOnly.ChargeShouldPayVat">
+            <summary>
+            The VAT rate on the charge, 0.15 equals 15%
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingPaymentOnly.ChargeShouldPayAmountVat">
+            <summary>
+            The VAT amount on the charge
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingPaymentOnly.ChargeAuthorizedAmount">
+            <summary>
+            The amount that has been authorized
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingPaymentOnly.ChargePayedAmount">
+            <summary>
+            The total amount that has already been payed
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingPaymentOnly.ChargeRefundedAmount">
+            <summary>
+            The total amount that has already been refunded
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingSection.Id">
+            <summary>
+            The ID of the section
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingSection.Name">
+            <summary>
+            The section name
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingSection.TimeSets">
+            <summary>
+            List of all time rules in this section
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingTimeRuleUnit.Start">
+            <summary>
+            The start time of the booking
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingTimeRuleUnit.End">
+            <summary>
+            The end time of the booking
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingTimeRuleUnit.AvailableUntil">
+            <summary>
+            The end time of the booking
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingTimeRuleUnit.AvailableSeats">
+            <summary>
+            List of all available guest sizes that are available on this time
+            </summary>
+        </member>
+        <member name="M:Api.Models.WebBookings.WebBookingTimeRule.FromTimeRules(System.Collections.Generic.IEnumerable{Api.Models.Bookings.WebTimeRule},System.Nullable{System.DateTime})">
+            <summary>
+            Create time rules for webbooking.
+            </summary>
+            <param name="rules"></param>
+            <param name="date">Limit rules to those valid on this date</param>
+            <returns></returns>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingTimeRule.Id">
+            <summary>
+            The ID of the web time rule
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingTimeRule.Title">
+            <summary>
+            The web time rule title
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingTimeRule.Conditions">
+            <summary>
+            A condition that must be shown to the user before confirming
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingTimeRule.MaximumConcurrentBookings">
+            <summary>
+            When the number of bookings during a specific time reach this limit, the time will not be available to book on the web
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingTimeRule.MaximumConcurrentSeats">
+            <summary>
+            When the number of booked guests during a specific time reach this limit, the time will not be available to book on the web
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingTimeRule.RecoupTime">
+            <summary>
+            Cleanup time, will be subtracted from the end time
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingTimeRule.IsClosed">
+            <summary>
+            Indicates if all times during this time rule are closed
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingTimeRule.ArenaEventId">
+            <summary>
+            Event ID, for time rules that have been connected to an event with the Arena functionality
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingTimeRule.ArenaCrmGroupId">
+            <summary>
+            CRM Group ID, for time rules that have been connected to a CRM group with the Arena functionality
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingTimeRule.Payment">
+            <summary>
+            Type of payment. 0 = NoFee, 1 = PrePayment, 2 = NoShowFee, 3 = NoShowFeeReservation, 4 = WebShop
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingTimeRule.PaymentModifier">
+            <summary>
+            Type of payment. 0 = NoPayment, 1 = PaymentPerGuest, 2 = PaymentPerBooking
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingTimeRule.PaymentAmount">
+            <summary>
+            The payment amount. May need to me multiplied by guest count, see PaymentType
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingTimeRule.PaymentVAT">
+            <summary>
+            The VAT rate of the payment. 0.12 = 12%
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingTimeRule.PaymentCurrency">
+            <summary>
+            The currency type for the payment
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingTimeRule.Times">
+            <summary>
+            List of all times in this booking
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingUnit.Id">
+            <summary>
+            The ID of the unit
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingUnit.Name">
+            <summary>
+            The unit name
+            </summary>
+        </member>
+        <member name="P:Api.Models.WebBookings.WebBookingUnit.Sections">
+            <summary>
+            List of all sections in this unit
+            </summary>
+        </member>
+    </members>
+</doc>

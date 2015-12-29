@@ -23,7 +23,8 @@ namespace HALC
 
             // build huffman tree
             var histogram = GetHistogram();
-            var nodes = histogram.Select(kvp => new Frequency(kvp.Key, kvp.Value)).OrderByDescending(f => f.Count).ToList();
+            var nodes = histogram.Select(kvp => new Frequency(kvp.Key, kvp.Value)).OrderBy(f => f.Count).ToList();
+            var indexedNodes = nodes.ToDictionary(f => f.B, f => f);
             while (nodes.Count() > 1)
             {
                 var left = nodes[0];
@@ -32,20 +33,25 @@ namespace HALC
                 nodes.Remove(left);
                 nodes.Remove(right);
                 nodes.Add(newNode);
-                nodes = nodes.OrderByDescending(f => f.Count).ToList();
+                nodes = nodes.OrderBy(f => f.Count).ToList();
             }
             
             // output tree
             var bitBuilder = new BitArrayBuilder();
-            nodes[0].Output(bitBuilder);
+            nodes[0].OutputAndBuildPaths(bitBuilder, new List<bool>());
             _builder.Append(bitBuilder.GetBytes());
 
             // output huffman codes for each byte
             bitBuilder = new BitArrayBuilder();
             foreach (var b in _data)
             {
-                
+                var node = indexedNodes[b];
+                foreach (var p in node.Path)
+                {
+                    bitBuilder.Append(p);
+                }
             }
+            _builder.Append(bitBuilder.GetBytes());
 
             return _builder.GetBytes();
         }
@@ -55,6 +61,11 @@ namespace HALC
             var histogram = new Dictionary<byte, int>();
             foreach (var b in _data)
             {
+                if (!histogram.ContainsKey(b))
+                {
+                    histogram.Add(b, 0);
+                }
+                
                 histogram[b]++;
             }
 
@@ -69,6 +80,7 @@ namespace HALC
         public bool IsLeaf = false;
         public Frequency Left;
         public Frequency Right;
+        public List<bool> Path; 
 
         public Frequency(Frequency left, Frequency right)
         {
@@ -84,16 +96,21 @@ namespace HALC
             IsLeaf = true;
         }
 
-        public void Output(BitArrayBuilder bitBuilder)
+        public void OutputAndBuildPaths(BitArrayBuilder bitBuilder, List<bool> path)
         {
             if (!IsLeaf)
             {
                 bitBuilder.Append(false);
-                Left.Output(bitBuilder);
-                Right.Output(bitBuilder);
+                var leftPath = new List<bool>(path);
+                leftPath.Add(false);
+                Left.OutputAndBuildPaths(bitBuilder, leftPath);
+                var rightPath = new List<bool>(path);
+                rightPath.Add(true);
+                Right.OutputAndBuildPaths(bitBuilder, rightPath);
             }
             else
             {
+                Path = path;
                 bitBuilder.Append(true);
                 bitBuilder.Append(B);
             }

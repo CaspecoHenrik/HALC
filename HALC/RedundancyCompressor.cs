@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace HALC
 {
     public class RedundancyCompressor
     {
-        private int _pointer = 0;
+        private int _compressionPointer = 0;
         private byte[] _uncompressed;
         private ByteArrayBuilder _builder;
 
@@ -21,19 +22,27 @@ namespace HALC
 
         private int BytesLeft()
         {
-            return _uncompressed.Length - _pointer;
+            return _uncompressed.Length - _compressionPointer;
         }
 
         private int GetRepeatCount()
         {
-            var val = _uncompressed[_pointer];
-            var pointer = _pointer + 1;
+            var val = _uncompressed[_compressionPointer];
+
+            // smart lookahead
+            var lookAheadPointer = _compressionPointer + HALC.RLECommandLength - 1;
+            if (lookAheadPointer >= _uncompressed.Length || _uncompressed[lookAheadPointer] != val)
+            {
+                return 0;
+            }
+
+            var pointer = _compressionPointer + 1;
             while (pointer < _uncompressed.Length && _uncompressed[pointer] == val)
             {
                 pointer++;
             }
 
-            return pointer - _pointer;
+            return pointer - _compressionPointer;
         }
 
         public byte[] Compress()
@@ -47,7 +56,7 @@ namespace HALC
                 var repeatCount = GetRepeatCount();
 
                 // try RLE first
-                if (repeatCount > 3)
+                if (repeatCount > HALC.RLECommandLength)
                 {
                     if (literalBuffer.Length > 0)
                     {
@@ -59,7 +68,18 @@ namespace HALC
                 else
                 {
                     var previousOccurance = GetPreviousOccurance();
-                    if (previousOccurance.BestMatchLength > 5)
+                    if (previousOccurance.BestMatchLength > HALC.ShortPointerCommandLength &&
+                        previousOccurance.BestMatchOffset <= HALC.MaxShortPointerOffset &&
+                        previousOccurance.BestMatchLength <= HALC.MaxShortPointerLength)
+                    {
+                        if (literalBuffer.Length > 0)
+                        {
+                            UseLiteral(literalBuffer.GetBytes());
+                            literalBuffer = new ByteArrayBuilder();
+                        }
+                        UseShortPointer(previousOccurance);
+                    }
+                    else if (previousOccurance.BestMatchLength > HALC.LongPointerCommandLength)
                     {
                         if (literalBuffer.Length > 0)
                         {
@@ -70,8 +90,8 @@ namespace HALC
                     }
                     else
                     {
-                        literalBuffer.Append(_uncompressed[_pointer]);
-                        _pointer++;
+                        literalBuffer.Append(_uncompressed[_compressionPointer]);
+                        _compressionPointer++;
                     }
                 }
             }
@@ -84,11 +104,18 @@ namespace HALC
             return _builder.GetBytes();
         }
 
-        private int GetMatchLength(int pointer)
+        private int GetMatchLength(int pointer, byte currentByte, out int searchPointer)
         {
-            var bytes = 0;
-            while ((_pointer + bytes) < _uncompressed.Length && (pointer + bytes) < _pointer && _uncompressed[_pointer + bytes] == _uncompressed[pointer + bytes])
+            var bytes = 1;
+            searchPointer = pointer + 1;
+
+            while ((_compressionPointer + bytes) < _uncompressed.Length && (pointer + bytes) < _compressionPointer && _uncompressed[_compressionPointer + bytes] == _uncompressed[pointer + bytes])
             {
+                if (_uncompressed[pointer + bytes] == currentByte)
+                {
+                    searchPointer = pointer + bytes;
+                }
+
                 bytes++;
             }
 
@@ -97,31 +124,62 @@ namespace HALC
 
         private PreviousOccurance GetPreviousOccurance()
         {
-            var offset = 1;
             int bestMatchLength = -1;
             int bestMatchOffset = 0;
-            var currentByte = _uncompressed[_pointer];
+            var currentByte = _uncompressed[_compressionPointer];
 
-            while (offset <= HALC.MaxLongPointerOffset && (_pointer - offset) > 0)
+            var searchPointer = Math.Max(0, _compressionPointer - HALC.MaxLongPointerOffset);
+            while (searchPointer <= (_compressionPointer - HALC.ShortPointerCommandLength))
             {
-                if (currentByte == _uncompressed[_pointer - offset])
+                if (currentByte == _uncompressed[searchPointer])
                 {
-                    var matchLength = GetMatchLength(_pointer - offset);
+                    int newSearchPointer;
+                    var matchLength = GetMatchLength(searchPointer, currentByte, out newSearchPointer);
                     if (matchLength > bestMatchLength)
                     {
                         bestMatchLength = matchLength;
-                        bestMatchOffset = offset;
+                        bestMatchOffset = _compressionPointer - searchPointer;
                     }
+                    searchPointer = newSearchPointer;
                 }
-                offset += 1;
+                else
+                {
+                    searchPointer++;
+                }
             }
 
             return new PreviousOccurance(bestMatchOffset, bestMatchLength);
         }
 
+        private void UseShortPointer(PreviousOccurance previousOccurance)
+        {
+            Debug.WriteLine("RedundancyCompressor: Writing ShortPointer @{0}. Offset={1}, Length={2}", _compressionPointer, previousOccurance.BestMatchOffset, previousOccurance.BestMatchLength);
+            Debug.Assert(
+                _compressionPointer - previousOccurance.BestMatchOffset >= 0 &&
+                previousOccurance.BestMatchOffset <= HALC.MaxShortPointerOffset &&
+                previousOccurance.BestMatchLength <= HALC.MaxShortPointerLength,
+                "Invalid ShortPointer.");
+
+            byte commandByte = (byte)((byte)HALC.Command.ShortPointer | (previousOccurance.BestMatchOffset >> 6));
+            byte offsetLengthByte = (byte)((byte)(previousOccurance.BestMatchOffset << 2) |
+                                            (previousOccurance.BestMatchLength >> 8));
+            byte LengthByte = (byte)previousOccurance.BestMatchLength;
+
+            _builder.Append(commandByte);
+            _builder.Append(offsetLengthByte);
+            _builder.Append(LengthByte);
+
+            _compressionPointer += previousOccurance.BestMatchLength;
+        }
+
         private void UseLongPointer(PreviousOccurance previousOccurance)
         {
-            //Debug.WriteLine("RedundancyCompressor: Writing LongPointer. Offset={0}, Length={1}", previousOccurance.BestMatchOffset, previousOccurance.BestMatchLength);
+            Debug.WriteLine("RedundancyCompressor: Writing LongPointer @{0}. Offset={1}, Length={2}", _compressionPointer, previousOccurance.BestMatchOffset, previousOccurance.BestMatchLength);
+            Debug.Assert(
+                _compressionPointer - previousOccurance.BestMatchOffset >= 0 &&
+                previousOccurance.BestMatchOffset <= HALC.MaxLongPointerOffset &&
+                previousOccurance.BestMatchLength <= HALC.MaxLongPointerLength,
+                "Invalid LongPointer.");
 
             byte commandByte = (byte) ((byte) HALC.Command.LongPointer | (previousOccurance.BestMatchOffset >> 20));
             byte offsetByte1 = (byte) (previousOccurance.BestMatchOffset >> 12);
@@ -136,12 +194,12 @@ namespace HALC
             _builder.Append(offsetLengthByte);
             _builder.Append(LengthByte);
 
-            _pointer += previousOccurance.BestMatchLength;
+            _compressionPointer += previousOccurance.BestMatchLength;
         }
 
         private void UseLiteral(byte[] literalBytes)
         {
-            //Debug.WriteLine("RedundancyCompressor: Writing Literal. Length={0}", literalBytes.Length);
+            Debug.WriteLine("RedundancyCompressor: Writing Literal @{0}. Length={1}", _compressionPointer, literalBytes.Length);
 
             var written = 0;
 
@@ -163,18 +221,18 @@ namespace HALC
 
         private void UseRLE(int repeatCount)
         {
-            //Debug.WriteLine("RedundancyCompressor: Writing RLE. Length={0}, Byte={1}", repeatCount, _uncompressed[_pointer]);
+            Debug.WriteLine("RedundancyCompressor: Writing RLE @{0}. Length={1}, Byte={2}", _compressionPointer, repeatCount, _uncompressed[_compressionPointer]);
 
             int count = Math.Min(repeatCount, HALC.MaxRLELength);
             byte commandByte = (byte) ((byte)HALC.Command.RLE | (count >> 8));
             byte lengthByte = (byte) (count & 0xFF);
-            byte value = _uncompressed[_pointer];
+            byte value = _uncompressed[_compressionPointer];
 
             _builder.Append(commandByte);
             _builder.Append(lengthByte);
             _builder.Append(value);
 
-            _pointer += count;
+            _compressionPointer += count;
         }
     }
 

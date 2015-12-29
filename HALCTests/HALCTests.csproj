@@ -53,6 +53,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="RatioTests.cs" />
+    <EmbeddedResource Include="TestFiles\test.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -63,13 +64,17 @@
       <Name>HALC</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="TestFiles\log.txt" />
+    <EmbeddedResource Include="TestFiles\test.dll" />
+    <EmbeddedResource Include="TestFiles\test.jpg" />
+    <EmbeddedResource Include="TestFiles\test.xml" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="TestFiles\funny.jpg" />
     <EmbeddedResource Include="TestFiles\test.exe" />
     <EmbeddedResource Include="TestFiles\text.txt" />
   </ItemGroup>

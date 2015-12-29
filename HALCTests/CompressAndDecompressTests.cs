@@ -33,8 +33,12 @@ namespace HALCTests
         [Test]
         public void CompressTestFiles_ReturnsSmallerArray()
         {
-            TestFile("funny.jpg");
-            //TestFile("test.exe");
+            TestFile("log.txt");
+            TestFile("test.cs");
+            TestFile("test.dll");
+            TestFile("test.exe");
+            TestFile("test.jpg");
+            TestFile("test.xml");
             TestFile("text.txt");
         }
 
@@ -48,9 +52,11 @@ namespace HALCTests
                 data = reader.ReadBytes((int) stream.Length);
             }
 
+            var sw = Stopwatch.StartNew();
             var compressed = HALC.HALC.Compress(data);
 
-            Debug.WriteLine("Compressed {0} from {1} to {2} ({3}%)", filename, data.Length, compressed.Length, 100 * compressed.Length / data.Length);
+            sw.Stop();
+            Debug.WriteLine("Compressed {0} from {1} to {2} ({3}%) in {4} ms", filename, data.Length, compressed.Length, 100 * compressed.Length / data.Length, sw.ElapsedMilliseconds);
 
             var uncompressed = HALC.HALC.Decompress(compressed);
             Assert.Less(compressed.Length, data.Length);

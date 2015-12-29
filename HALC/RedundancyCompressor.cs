@@ -153,7 +153,7 @@ namespace HALC
 
         private void UseShortPointer(PreviousOccurance previousOccurance)
         {
-            Debug.WriteLine("RedundancyCompressor: Writing ShortPointer @{0}. Offset={1}, Length={2}", _compressionPointer, previousOccurance.BestMatchOffset, previousOccurance.BestMatchLength);
+            //Debug.WriteLine("RedundancyCompressor: Writing ShortPointer @{0}. Offset={1}, Length={2}", _compressionPointer, previousOccurance.BestMatchOffset, previousOccurance.BestMatchLength);
             Debug.Assert(
                 _compressionPointer - previousOccurance.BestMatchOffset >= 0 &&
                 previousOccurance.BestMatchOffset <= HALC.MaxShortPointerOffset &&
@@ -174,7 +174,7 @@ namespace HALC
 
         private void UseLongPointer(PreviousOccurance previousOccurance)
         {
-            Debug.WriteLine("RedundancyCompressor: Writing LongPointer @{0}. Offset={1}, Length={2}", _compressionPointer, previousOccurance.BestMatchOffset, previousOccurance.BestMatchLength);
+            //Debug.WriteLine("RedundancyCompressor: Writing LongPointer @{0}. Offset={1}, Length={2}", _compressionPointer, previousOccurance.BestMatchOffset, previousOccurance.BestMatchLength);
             Debug.Assert(
                 _compressionPointer - previousOccurance.BestMatchOffset >= 0 &&
                 previousOccurance.BestMatchOffset <= HALC.MaxLongPointerOffset &&
@@ -199,7 +199,7 @@ namespace HALC
 
         private void UseLiteral(byte[] literalBytes)
         {
-            Debug.WriteLine("RedundancyCompressor: Writing Literal @{0}. Length={1}", _compressionPointer, literalBytes.Length);
+            //Debug.WriteLine("RedundancyCompressor: Writing Literal @{0}. Length={1}", _compressionPointer, literalBytes.Length);
 
             var written = 0;
 
@@ -221,7 +221,7 @@ namespace HALC
 
         private void UseRLE(int repeatCount)
         {
-            Debug.WriteLine("RedundancyCompressor: Writing RLE @{0}. Length={1}, Byte={2}", _compressionPointer, repeatCount, _uncompressed[_compressionPointer]);
+            //Debug.WriteLine("RedundancyCompressor: Writing RLE @{0}. Length={1}, Byte={2}", _compressionPointer, repeatCount, _uncompressed[_compressionPointer]);
 
             int count = Math.Min(repeatCount, HALC.MaxRLELength);
             byte commandByte = (byte) ((byte)HALC.Command.RLE | (count >> 8));

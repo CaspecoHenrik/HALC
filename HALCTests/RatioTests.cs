@@ -1,0 +1,6 @@
+﻿namespace HALCTests
+{
+    class RatioTests
+    {
+    }
+}
